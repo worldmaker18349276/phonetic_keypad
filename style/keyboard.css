@@ -1,0 +1,74 @@
+.keyboard {
+	width: 724px;
+	border: 2px solid Gray;
+	border-radius: 5px;
+}
+.keyboard .row1 {
+	margin: 2px auto;
+}
+.keyboard .row2 {
+	margin: 2px auto;
+	margin-left: 20px;
+}
+.keyboard .row3 {
+	margin: 2px auto;
+	margin-left: 40px;
+}
+.keyboard .row4 {
+	margin: 2px auto;
+	margin-left: 60px;
+}
+.keyboard .row5 {
+	margin: 2px auto;
+	width: 300px;
+}
+
+.key {
+	font-size: 40px;
+	font-family: "標楷體";
+	height: 60px;
+	width: 60px;
+}
+.space {
+	width: 300px;
+}
+
+#key01, #key12, #key23, #key33 {
+	background-color: Lime;
+}
+#key02, #key13, #key24, #key34 {
+	background-color: LightGreen;
+}
+#key14, #key25, #key35 {
+	background-color: Lime;
+}
+#key15, #key26, #key36 {
+	background-color: LightGreen;
+}
+#key05, #key16, #key27, #key37 {
+	background-color: Orchid;
+}
+#key17, #key28, #key38 {
+	background-color: Plum;
+}
+#key18, #key29, #key39 {
+	background-color: Yellow;
+}
+#key08, #key19, #key30, #key40 {
+	background-color: Orange;
+}
+#key09, #key20, #key31, #key41 {
+	background-color: PeachPuff;
+}
+#key10, #key21, #key32, #key42 {
+	background-color: Orange;
+}
+#key11 {
+	background-color: PeachPuff;
+}
+#key03, #key04, #key06, #key07 {
+	background-color: LightGray;
+}
+#key22, #key43 {
+	background-color: LightGray;
+}
