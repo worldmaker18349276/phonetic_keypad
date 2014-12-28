@@ -15,7 +15,7 @@ function measureCChar( cx, size, cchar ) {
 	cx.font = h0+'px 標楷體';
 	var w0 = cx.measureText('ㄅ').width;
 	total_width += w0+m0;
-	total_width += w0+m0;
+	total_width += w0;
 	cx.restore();
 
 	total_width *= cchar.length;
@@ -103,8 +103,36 @@ function printCChar( cx, size, cchar ) {
 		if ( side )
 			cx.fillText(side, 0, 0);
 		cx.restore();
-		cx.translate(s0, 0);
+		cx.translate(w0, 0);
 	}
 
 	cx.restore();
+}
+
+function printBackGround( cx, size, st ) {
+	var total_width = 0;
+	cx.save();
+	cx.textAlign = 'left';
+	cx.textBaseline = 'top';
+
+	var h = size;
+	var m = -Math.round(h/10);
+	cx.font = h+'px 標楷體';
+	var w = cx.measureText('文').width;
+	total_width += w+m;
+
+	var h0 = Math.round(size/3.3);
+	var m0 = -Math.round(h0/10);
+	cx.font = h0+'px 標楷體';
+	var w0 = cx.measureText('ㄅ').width;
+	total_width += w0+m0;
+	total_width += w0;
+	cx.restore();
+
+	for ( var i in st ) {
+		cx.save();
+		cx.fillStyle = st[i];
+		cx.fillRect(total_width*i, -h/2, w+m + w0+m0 + w0, h);
+		cx.restore();
+	}
 }
