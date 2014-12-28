@@ -78,25 +78,14 @@
 
 			var size = Math.round(canvas.height/3);
 
-			var ch = new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] );
-			var w = printCChar(cx, size, ch);
-			cx.translate(w, 0);
-
-			var ch = new CChar('哈', ['ㄏ','ㄚ'] );
-			var w = printCChar(cx, size, ch);
-			cx.translate(w, 0);
-
-			var ch = new CChar('疑', ['ㄧ','ˊ'] );
-			var w = printCChar(cx, size, ch);
-			cx.translate(w, 0);
-
-			var ch = new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] );
-			var w = printCChar(cx, size, ch);
-			cx.translate(w, 0);
-
-			var ch = new CChar('哦', ['ㄜ','˙'] );
-			var w = printCChar(cx, size, ch);
-			cx.translate(w, 0);
+			var ch = [
+				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
+				new CChar('哈', ['ㄏ','ㄚ'] ),
+				new CChar('疑', ['ㄧ','ˊ'] ),
+				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
+				new CChar('哦', ['ㄜ','˙'] )
+			];
+			printCChar(cx, size, ch);
 
 		</script>
 	</body>

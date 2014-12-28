@@ -8,7 +8,7 @@ phone_lists[0] = [ 'ˇ', 'ˋ', 'ˊ', '˙', '　' ];
 function CChar( text, phones ) {
 	this.text = text;
 	this.phones = new Array(4);
-	for ( i in phones )
+	for ( var i in phones )
 		this.putPhone(phones[i]);
 }
 
@@ -17,9 +17,9 @@ CChar.prototype.getPhoneColumn = function() {
 
 	if ( this.phones[0] )
 		if ( this.phones[0] == '˙' )
-			col.unshift(this.phones[0]);
+			col.push(this.phones[0]);
 
-	for ( i=1; i<4; i++ )
+	for ( var i=1; i<4; i++ )
 		if ( this.phones[i] )
 			col.push(this.phones[i]);
 
@@ -33,7 +33,7 @@ CChar.prototype.getPhoneSide = function() {
 }
 
 CChar.prototype.putPhone = function( phone ) {
-	for ( i=0; i<4; i++ )
+	for ( var i=0; i<4; i++ )
 		if ( phone_lists[i].indexOf(phone) != -1 )
 			this.phones[i] = phone;
 }
@@ -42,7 +42,7 @@ CChar.prototype.deletePhone = function( i ) {
 	if ( i === undefined )
 		delete this.phones[i];
 	else
-		for ( i=4; i>0; i-- )
+		for ( var i=4; i>0; i-- )
 			if ( this.phones[i%4] ) {
 				delete this.phones[i];
 				break;
