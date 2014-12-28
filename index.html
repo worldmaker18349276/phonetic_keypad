@@ -16,11 +16,11 @@
 				<div class="row1">
 					<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
 					<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
-					<button class="key" id="key03" onclick="keyin(this)">ˇ</button>
-					<button class="key" id="key04" onclick="keyin(this)">ˋ</button>
+					<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
+					<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
 					<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
-					<button class="key" id="key06" onclick="keyin(this)">ˊ</button>
-					<button class="key" id="key07" onclick="keyin(this)">˙</button>
+					<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
+					<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
 					<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
 					<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
 					<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
@@ -64,7 +64,7 @@
 					<button class="key" id="key42" onclick="keyin(this)">ㄥ</button>
 				</div>
 				<div class="row5">
-					<button class="key space" id="key43" onclick="keyin(this)">　</button>
+					<button class="key space" id="key43" onclick="space()">　</button>
 				</div>
 			</div>
 		</div>
@@ -73,17 +73,17 @@
 		<script src="js/text.js"></script>
 		<script src="js/action.js"></script>
 		<script>
-			var ch = [
+			canvas = document.getElementById('text');
+			text_size = Math.round(canvas.height/3);
+			total_cchar = [
 				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
 				new CChar('哈', ['ㄏ','ㄚ'] ),
 				new CChar('疑', ['ㄧ','ˊ'] ),
 				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
 				new CChar('哦', ['ㄜ','˙'] )
 			];
+			current_cchar = total_cchar[1];
 
-			canvas = document.getElementById('text');
-			text_size = Math.round(canvas.height/3);
-			current_cchar = ch[1];
 			repaintCChar();
 		</script>
 	</body>

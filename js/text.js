@@ -70,8 +70,13 @@ function printCChar( cx, size, cchar ) {
 				break;
 
 			case 2:
-				cx.fillText(col[0], 0,-s0/2);
-				cx.fillText(col[1], 0, s0/2);
+				if ( phone_lists[1].indexOf(col[0]) != -1 && phone_lists[3].indexOf(col[1]) != -1 ) {
+					cx.fillText(col[0], 0,-s0*2/3);
+					cx.fillText(col[1], 0, s0*2/3);
+				} else {
+					cx.fillText(col[0], 0,-s0/2);
+					cx.fillText(col[1], 0, s0/2);
+				}
 				break;
 
 			case 3:
