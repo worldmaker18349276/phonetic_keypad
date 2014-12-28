@@ -63,7 +63,10 @@ function printCChar( cx, size, cchar ) {
 		var col = cchar[i].getPhoneColumn();
 		switch ( col.length ) {
 			case 1:
-				cx.fillText(col[0], 0, s0/2);
+				if ( phone_lists[1].indexOf(col[0]) != -1 )
+					cx.fillText(col[0], 0,-s0/2);
+				else
+					cx.fillText(col[0], 0, s0/2);
 				break;
 
 			case 2:

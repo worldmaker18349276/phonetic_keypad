@@ -39,12 +39,12 @@ CChar.prototype.putPhone = function( phone ) {
 }
 
 CChar.prototype.deletePhone = function( i ) {
-	if ( i === undefined )
+	if ( i !== undefined )
 		delete this.phones[i];
 	else
 		for ( var i=4; i>0; i-- )
 			if ( this.phones[i%4] ) {
-				delete this.phones[i];
+				delete this.phones[i%4];
 				break;
 			}
 }
