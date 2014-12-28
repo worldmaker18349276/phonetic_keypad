@@ -46,39 +46,40 @@ function printCChar( cx, size, cchar ) {
 	cx.font = h0+'px 標楷體';
 	var w0 = cx.measureText(cchar.text).width;
 
-	switch ( cchar.phones.length ) {
+	var col = cchar.getFirstColumn();
+	switch ( col.length ) {
 		case 1:
 			cx.save();
 			cx.translate(0, -h0/2);
 			cx.fillText('　', 0,-s0/2);
-			cx.fillText(cchar.phones[0], 0, (s0/2));
+			cx.fillText(col[0], 0, (s0/2));
 			cx.restore();
 			break;
 
 		case 2:
 			cx.save();
 			cx.translate(0, -h0/2);
-			cx.fillText(cchar.phones[0], 0,-(s0/2));
-			cx.fillText(cchar.phones[1], 0, (s0/2));
+			cx.fillText(col[0], 0,-(s0/2));
+			cx.fillText(col[1], 0, (s0/2));
 			cx.restore();
 			break;
 
 		case 3:
 			cx.save();
 			cx.translate(0, -h0/2);
-			cx.fillText(cchar.phones[0], 0,-s0);
-			cx.fillText(cchar.phones[1], 0, 0);
-			cx.fillText(cchar.phones[2], 0, s0);
+			cx.fillText(col[0], 0,-s0);
+			cx.fillText(col[1], 0, 0);
+			cx.fillText(col[2], 0, s0);
 			cx.restore();
 			break;
 
 		case 4:
 			cx.save();
 			cx.translate(0, -h0/2);
-			cx.fillText(cchar.phones[0], 0,-s0*2);
-			cx.fillText(cchar.phones[1], 0,-s0);
-			cx.fillText(cchar.phones[2], 0, 0);
-			cx.fillText(cchar.phones[3], 0, s0);
+			cx.fillText(col[0], 0,-s0*2);
+			cx.fillText(col[1], 0,-s0);
+			cx.fillText(col[2], 0, 0);
+			cx.fillText(col[3], 0, s0);
 			cx.restore();
 			break;
 	}

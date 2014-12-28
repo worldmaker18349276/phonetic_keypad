@@ -74,11 +74,11 @@
 		<script>
 			var canvas = document.getElementById('text');
 			var cx = canvas.getContext('2d');
-			cx.translate(100, canvas.height/2);
+			cx.translate(5, canvas.height/2);
 
 			var size = Math.round(canvas.height/3);
 
-			var ch = new CChar('國', ['ㄍ','ㄨ','ㄛ'], 'ˊ' );
+			var ch = new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] );
 			var w = printCChar(cx, size, ch);
 			cx.translate(w, 0);
 
@@ -86,12 +86,17 @@
 			var w = printCChar(cx, size, ch);
 			cx.translate(w, 0);
 
-			var ch = new CChar('疑', ['ㄧ'], 'ˊ' );
+			var ch = new CChar('疑', ['ㄧ','ˊ'] );
 			var w = printCChar(cx, size, ch);
 			cx.translate(w, 0);
 
-			var ch = new CChar('咧', ['˙','ㄌ','ㄧ','ㄝ'] );
+			var ch = new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] );
 			var w = printCChar(cx, size, ch);
+			cx.translate(w, 0);
+
+			var ch = new CChar('哦', ['ㄜ','˙'] );
+			var w = printCChar(cx, size, ch);
+			cx.translate(w, 0);
 
 		</script>
 	</body>
