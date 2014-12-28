@@ -46,7 +46,7 @@ function printCChar( cx, size, cchar ) {
 	cx.font = h0+'px 標楷體';
 	var w0 = cx.measureText(cchar.text).width;
 
-	var col = cchar.getFirstColumn();
+	var col = cchar.getPhoneColumn();
 	switch ( col.length ) {
 		case 1:
 			cx.save();
@@ -87,10 +87,11 @@ function printCChar( cx, size, cchar ) {
 	total_width += s0;
 	cx.translate(s0, 0);
 	
-	if ( cchar.side ) {
+	var side = cchar.getPhoneSide();
+	if ( side ) {
 		cx.save();
 		cx.translate(0, -h0/2)
-		cx.fillText(cchar.side, 0, 0);
+		cx.fillText(side, 0, 0);
 		cx.restore();
 	}
 	total_width += s0;

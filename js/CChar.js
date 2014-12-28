@@ -7,50 +7,44 @@ phone_lists[0] = [ 'ˇ', 'ˋ', 'ˊ', '˙', '　' ];
 
 function CChar( text, phones ) {
 	this.text = text;
-	this.phones = phones;
+	this.phones = new Array(4);
+	for ( i in phones )
+		this.putPhone(phones[i]);
 }
 
-CChar.prototype.getFirstColumn = function() {
+CChar.prototype.getPhoneColumn = function() {
 	var col = new Array();
 
-	for ( i in this.phones ) {
-		var e = this.phones[i];
-		if ( e == '˙' ) {
-			col.push(e);
-			break;
-		}
-	}
+	if ( this.phones[0] )
+		if ( this.phones[0] == '˙' )
+			col.unshift(this.phones[0]);
 
-	for ( i in this.phones ) {
-		var e = this.phones[i];
-		if ( phone_lists[1].indexOf(e) != -1 ) {
-			col.push(e);
-			break;
-		}
-	}
-
-	for ( i in this.phones ) {
-		var e = this.phones[i];
-		if ( phone_lists[2].indexOf(e) != -1 ) {
-			col.push(e);
-			break;
-		}
-	}
-
-	for ( i in this.phones ) {
-		var e = this.phones[i];
-		if ( phone_lists[3].indexOf(e) != -1 ) {
-			col.push(e);
-			break;
-		}
-	}
+	for ( i=1; i<4; i++ )
+		if ( this.phones[i] )
+			col.push(this.phones[i]);
 
 	return col;
 }
 
-CChar.prototype.getSide = function() {
-	for ( i in this.phones ) {
-		if ( phone_lists[0].indexOf(e) != -1 && e != '˙' )
-			return e;
-	}
+CChar.prototype.getPhoneSide = function() {
+	if ( this.phones[0] )
+		if ( this.phones[0] != '˙' )
+			return this.phones[0];
+}
+
+CChar.prototype.putPhone = function( phone ) {
+	for ( i=0; i<4; i++ )
+		if ( phone_lists[i].indexOf(phone) != -1 )
+			this.phones[i] = phone;
+}
+
+CChar.prototype.deletePhone = function( i ) {
+	if ( i === undefined )
+		delete this.phones[i];
+	else
+		for ( i=4; i>0; i-- )
+			if ( this.phones[i%4] ) {
+				delete this.phones[i];
+				break;
+			}
 }
