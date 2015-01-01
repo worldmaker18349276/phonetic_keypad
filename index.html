@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title> phonetics quiz </title>
 
+		<link href="style/main.css" rel="stylesheet" type="text/css">
 		<link href="style/keyboard.css" rel="stylesheet" type="text/css">
 		<link href="style/displayer.css" rel="stylesheet" type="text/css">
 	</head>
@@ -12,115 +13,117 @@
 			<div class="displayer">
 				<canvas id="text" width="724px" height="270px"></canvas>
 			</div>
-			<div class="keyboard">
-				<div class="row1">
-					<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
-					<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
-					<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
-					<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
-					<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
-					<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
-					<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
-					<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
-					<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
-					<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
-					<button class="key" id="key11" onclick="keyin(this)">ㄦ</button>
+			<div class="inputboard">
+				<div class="keyboard">
+					<div class="row1">
+						<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
+						<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
+						<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
+						<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
+						<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
+						<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
+						<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
+						<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
+						<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
+						<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
+						<button class="key" id="key11" onclick="keyin(this)">ㄦ</button>
+					</div>
+					<div class="row2">
+						<button class="key" id="key12" onclick="keyin(this)">ㄆ</button>
+						<button class="key" id="key13" onclick="keyin(this)">ㄊ</button>
+						<button class="key" id="key14" onclick="keyin(this)">ㄍ</button>
+						<button class="key" id="key15" onclick="keyin(this)">ㄐ</button>
+						<button class="key" id="key16" onclick="keyin(this)">ㄔ</button>
+						<button class="key" id="key17" onclick="keyin(this)">ㄗ</button>
+						<button class="key" id="key18" onclick="keyin(this)">ㄧ</button>
+						<button class="key" id="key19" onclick="keyin(this)">ㄛ</button>
+						<button class="key" id="key20" onclick="keyin(this)">ㄟ</button>
+						<button class="key" id="key21" onclick="keyin(this)">ㄣ</button>
+						<button class="key" id="key22" onclick="del()">←</button>
+					</div>
+					<div class="row3">
+						<button class="key" id="key23" onclick="keyin(this)">ㄇ</button>
+						<button class="key" id="key24" onclick="keyin(this)">ㄋ</button>
+						<button class="key" id="key25" onclick="keyin(this)">ㄎ</button>
+						<button class="key" id="key26" onclick="keyin(this)">ㄑ</button>
+						<button class="key" id="key27" onclick="keyin(this)">ㄕ</button>
+						<button class="key" id="key28" onclick="keyin(this)">ㄘ</button>
+						<button class="key" id="key29" onclick="keyin(this)">ㄨ</button>
+						<button class="key" id="key30" onclick="keyin(this)">ㄜ</button>
+						<button class="key" id="key31" onclick="keyin(this)">ㄠ</button>
+						<button class="key" id="key32" onclick="keyin(this)">ㄤ</button>
+					</div>
+					<div class="row4">
+						<button class="key" id="key33" onclick="keyin(this)">ㄈ</button>
+						<button class="key" id="key34" onclick="keyin(this)">ㄌ</button>
+						<button class="key" id="key35" onclick="keyin(this)">ㄏ</button>
+						<button class="key" id="key36" onclick="keyin(this)">ㄒ</button>
+						<button class="key" id="key37" onclick="keyin(this)">ㄖ</button>
+						<button class="key" id="key38" onclick="keyin(this)">ㄙ</button>
+						<button class="key" id="key39" onclick="keyin(this)">ㄩ</button>
+						<button class="key" id="key40" onclick="keyin(this)">ㄝ</button>
+						<button class="key" id="key41" onclick="keyin(this)">ㄡ</button>
+						<button class="key" id="key42" onclick="keyin(this)">ㄥ</button>
+					</div>
+					<div class="row5">
+						<button class="key space" id="key43" onclick="space()">　</button>
+					</div>
 				</div>
-				<div class="row2">
-					<button class="key" id="key12" onclick="keyin(this)">ㄆ</button>
-					<button class="key" id="key13" onclick="keyin(this)">ㄊ</button>
-					<button class="key" id="key14" onclick="keyin(this)">ㄍ</button>
-					<button class="key" id="key15" onclick="keyin(this)">ㄐ</button>
-					<button class="key" id="key16" onclick="keyin(this)">ㄔ</button>
-					<button class="key" id="key17" onclick="keyin(this)">ㄗ</button>
-					<button class="key" id="key18" onclick="keyin(this)">ㄧ</button>
-					<button class="key" id="key19" onclick="keyin(this)">ㄛ</button>
-					<button class="key" id="key20" onclick="keyin(this)">ㄟ</button>
-					<button class="key" id="key21" onclick="keyin(this)">ㄣ</button>
-					<button class="key" id="key22" onclick="del()">←</button>
-				</div>
-				<div class="row3">
-					<button class="key" id="key23" onclick="keyin(this)">ㄇ</button>
-					<button class="key" id="key24" onclick="keyin(this)">ㄋ</button>
-					<button class="key" id="key25" onclick="keyin(this)">ㄎ</button>
-					<button class="key" id="key26" onclick="keyin(this)">ㄑ</button>
-					<button class="key" id="key27" onclick="keyin(this)">ㄕ</button>
-					<button class="key" id="key28" onclick="keyin(this)">ㄘ</button>
-					<button class="key" id="key29" onclick="keyin(this)">ㄨ</button>
-					<button class="key" id="key30" onclick="keyin(this)">ㄜ</button>
-					<button class="key" id="key31" onclick="keyin(this)">ㄠ</button>
-					<button class="key" id="key32" onclick="keyin(this)">ㄤ</button>
-				</div>
-				<div class="row4">
-					<button class="key" id="key33" onclick="keyin(this)">ㄈ</button>
-					<button class="key" id="key34" onclick="keyin(this)">ㄌ</button>
-					<button class="key" id="key35" onclick="keyin(this)">ㄏ</button>
-					<button class="key" id="key36" onclick="keyin(this)">ㄒ</button>
-					<button class="key" id="key37" onclick="keyin(this)">ㄖ</button>
-					<button class="key" id="key38" onclick="keyin(this)">ㄙ</button>
-					<button class="key" id="key39" onclick="keyin(this)">ㄩ</button>
-					<button class="key" id="key40" onclick="keyin(this)">ㄝ</button>
-					<button class="key" id="key41" onclick="keyin(this)">ㄡ</button>
-					<button class="key" id="key42" onclick="keyin(this)">ㄥ</button>
-				</div>
-				<div class="row5">
-					<button class="key space" id="key43" onclick="space()">　</button>
-				</div>
-			</div>
-			<div class="selector">
-				<div class="row1">
-					<button class="selection" id="selection01" onclick="select(this)"></button>
-					<button class="selection" id="selection02" onclick="select(this)"></button>
-					<button class="selection" id="selection03" onclick="select(this)"></button>
-					<button class="selection" id="selection04" onclick="select(this)"></button>
-					<button class="selection" id="selection05" onclick="select(this)"></button>
-					<button class="selection" id="selection06" onclick="select(this)"></button>
-					<button class="selection" id="selection07" onclick="select(this)"></button>
-					<button class="selection" id="selection08" onclick="select(this)"></button>
-					<button class="selection" id="selection09" onclick="select(this)"></button>
-					<button class="selection" id="selection10" onclick="select(this)"></button>
-					<button class="selection" id="selection11" onclick="select(this)"></button>
-				</div>
-				<div class="row2">
-					<button class="selection" id="selection12" onclick="select(this)"></button>
-					<button class="selection" id="selection13" onclick="select(this)"></button>
-					<button class="selection" id="selection14" onclick="select(this)"></button>
-					<button class="selection" id="selection15" onclick="select(this)"></button>
-					<button class="selection" id="selection16" onclick="select(this)"></button>
-					<button class="selection" id="selection17" onclick="select(this)"></button>
-					<button class="selection" id="selection18" onclick="select(this)"></button>
-					<button class="selection" id="selection19" onclick="select(this)"></button>
-					<button class="selection" id="selection20" onclick="select(this)"></button>
-					<button class="selection" id="selection21" onclick="select(this)"></button>
-					<button class="selection" id="selection22" onclick="select(this)"></button>
-				</div>
-				<div class="row3">
-					<button class="selection" id="selection23" onclick="select(this)"></button>
-					<button class="selection" id="selection24" onclick="select(this)"></button>
-					<button class="selection" id="selection25" onclick="select(this)"></button>
-					<button class="selection" id="selection26" onclick="select(this)"></button>
-					<button class="selection" id="selection27" onclick="select(this)"></button>
-					<button class="selection" id="selection28" onclick="select(this)"></button>
-					<button class="selection" id="selection29" onclick="select(this)"></button>
-					<button class="selection" id="selection30" onclick="select(this)"></button>
-					<button class="selection" id="selection31" onclick="select(this)"></button>
-					<button class="selection" id="selection32" onclick="select(this)"></button>
-					<button class="selection" id="selection33" onclick="select(this)"></button>
-				</div>
-				<div class="row4">
-					<button class="selection" id="selection34" onclick="select(this)"></button>
-					<button class="selection" id="selection35" onclick="select(this)"></button>
-					<button class="selection" id="selection36" onclick="select(this)"></button>
-					<button class="selection" id="selection37" onclick="select(this)"></button>
-					<button class="selection" id="selection38" onclick="select(this)"></button>
-					<button class="selection" id="selection39" onclick="select(this)"></button>
-					<button class="selection" id="selection40" onclick="select(this)"></button>
-					<button class="selection" id="selection41" onclick="select(this)"></button>
-					<button class="selection" id="selection42" onclick="select(this)"></button>
-					<button class="selection" id="selection43" onclick="select(this)"></button>
-					<button class="selection" id="selection44" onclick="select(this)"></button>
-				</div>
-				<div class="row5">
+				<div class="selector">
+					<div class="row1">
+						<button class="selection" id="selection01" onclick="select(this)"></button>
+						<button class="selection" id="selection02" onclick="select(this)"></button>
+						<button class="selection" id="selection03" onclick="select(this)"></button>
+						<button class="selection" id="selection04" onclick="select(this)"></button>
+						<button class="selection" id="selection05" onclick="select(this)"></button>
+						<button class="selection" id="selection06" onclick="select(this)"></button>
+						<button class="selection" id="selection07" onclick="select(this)"></button>
+						<button class="selection" id="selection08" onclick="select(this)"></button>
+						<button class="selection" id="selection09" onclick="select(this)"></button>
+						<button class="selection" id="selection10" onclick="select(this)"></button>
+						<button class="selection" id="selection11" onclick="select(this)"></button>
+					</div>
+					<div class="row2">
+						<button class="selection" id="selection12" onclick="select(this)"></button>
+						<button class="selection" id="selection13" onclick="select(this)"></button>
+						<button class="selection" id="selection14" onclick="select(this)"></button>
+						<button class="selection" id="selection15" onclick="select(this)"></button>
+						<button class="selection" id="selection16" onclick="select(this)"></button>
+						<button class="selection" id="selection17" onclick="select(this)"></button>
+						<button class="selection" id="selection18" onclick="select(this)"></button>
+						<button class="selection" id="selection19" onclick="select(this)"></button>
+						<button class="selection" id="selection20" onclick="select(this)"></button>
+						<button class="selection" id="selection21" onclick="select(this)"></button>
+						<button class="selection" id="selection22" onclick="select(this)"></button>
+					</div>
+					<div class="row3">
+						<button class="selection" id="selection23" onclick="select(this)"></button>
+						<button class="selection" id="selection24" onclick="select(this)"></button>
+						<button class="selection" id="selection25" onclick="select(this)"></button>
+						<button class="selection" id="selection26" onclick="select(this)"></button>
+						<button class="selection" id="selection27" onclick="select(this)"></button>
+						<button class="selection" id="selection28" onclick="select(this)"></button>
+						<button class="selection" id="selection29" onclick="select(this)"></button>
+						<button class="selection" id="selection30" onclick="select(this)"></button>
+						<button class="selection" id="selection31" onclick="select(this)"></button>
+						<button class="selection" id="selection32" onclick="select(this)"></button>
+						<button class="selection" id="selection33" onclick="select(this)"></button>
+					</div>
+					<div class="row4">
+						<button class="selection" id="selection34" onclick="select(this)"></button>
+						<button class="selection" id="selection35" onclick="select(this)"></button>
+						<button class="selection" id="selection36" onclick="select(this)"></button>
+						<button class="selection" id="selection37" onclick="select(this)"></button>
+						<button class="selection" id="selection38" onclick="select(this)"></button>
+						<button class="selection" id="selection39" onclick="select(this)"></button>
+						<button class="selection" id="selection40" onclick="select(this)"></button>
+						<button class="selection" id="selection41" onclick="select(this)"></button>
+						<button class="selection" id="selection42" onclick="select(this)"></button>
+						<button class="selection" id="selection43" onclick="select(this)"></button>
+						<button class="selection" id="selection44" onclick="select(this)"></button>
+					</div>
+					<div class="row5">
+					</div>
 				</div>
 			</div>
 		</div>
