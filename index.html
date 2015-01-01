@@ -135,8 +135,7 @@
 
 		<script src="js/CChar.js"></script>
 		<script src="js/print.js"></script>
-		<script src="js/text.js"></script>
-		<script src="js/input.js"></script>
+		<script src="js/control.js"></script>
 		<script>
 			canvas = document.getElementById('text');
 			text_size = 36;
@@ -204,7 +203,8 @@
 				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
 				new CChar('哦', ['ㄜ','˙'] )
 			];
-			current_index = 8;
+			current_index = 15;
+			hightlight[current_index] = 'select';
 
 			repaintText();
 		</script>
