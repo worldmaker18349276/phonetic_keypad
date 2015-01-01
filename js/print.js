@@ -1,37 +1,27 @@
-var canvas;
-var text_size; /*text height (px)*/
-var line_spacing;
-
-var total_cchar = new Array();
-var hightlight = new Array();
-
-
-function repaintText() {
-	canvas.width = canvas.width;
-	var cx = canvas.getContext('2d');
-
+function printCChars( cx, text_size, line_spacing, total_cchar, hightlight ) {
 	cx.save();
 	cx.translate(0, text_size/2 + line_spacing/2);
 
 	cx.save();
 	var offset = 0;
-	for ( var i=0; i<=total_cchar.length; i++ ) {
+	for ( var i=0; i<total_cchar.length; i++ ) {
 		var cchar_width = measureCChar(cx, text_size, total_cchar[i]);
 		offset += cchar_width;
-		if ( offset > canvas.width ) {
+		if ( offset > cx.canvas.width ) {
 			cx.restore();
 			cx.translate(0, text_size+line_spacing);
 			cx.save();
 			offset = cchar_width;
 		}
-		if ( hightlight[i] == 'warning' )
-			printBackGround(cx, text_size, 'Red');
-		else if ( hightlight[i] == 'edit' )
-			printBackGround(cx, text_size, 'LightGreen');
-		else if ( hightlight[i] == 'select' )
-			printBackGround(cx, text_size, 'Blue');
-		else if ( hightlight[i] == 'focus' )
-			printCursor(cx, text_size, 'Black');
+		if ( hightlight )
+			if ( hightlight[i] == 'warning' )
+				printBackGround(cx, text_size, 'Red');
+			else if ( hightlight[i] == 'edit' )
+				printBackGround(cx, text_size, 'LightGreen');
+			else if ( hightlight[i] == 'select' )
+				printBackGround(cx, text_size, 'Blue');
+			else if ( hightlight[i] == 'focus' )
+				printCursor(cx, text_size, 'Black');
 
 		if ( total_cchar[i] )
 			printCChar(cx, text_size, total_cchar[i]);
@@ -178,7 +168,8 @@ function printBackGround( cx, size, st ) {
 function printCursor( cx, size, st ) {
 	cx.save();
 	cx.strokeStyle = st;
-	cx.lineTo(0, -size/2);
+	cx.beginPath();
+	cx.moveTo(0, -size/2);
 	cx.lineTo(0, size/2);
 	cx.stroke();
 	cx.restore();

@@ -40,7 +40,7 @@
 						<button class="key" id="key19" onclick="keyin(this)">ㄛ</button>
 						<button class="key" id="key20" onclick="keyin(this)">ㄟ</button>
 						<button class="key" id="key21" onclick="keyin(this)">ㄣ</button>
-						<button class="key" id="key22" onclick="del()">←</button>
+						<button class="key" id="key22" onclick="backspace()">←</button>
 					</div>
 					<div class="row3">
 						<button class="key" id="key23" onclick="keyin(this)">ㄇ</button>
@@ -138,9 +138,7 @@
 		<script src="js/control.js"></script>
 		<script>
 			canvas = document.getElementById('text');
-			text_size = 36;
-			line_spacing = text_size/6;
-			total_cchar = [
+			cchars = [
 				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
 				new CChar('哈', ['ㄏ','ㄚ'] ),
 				new CChar('疑', ['ㄧ','ˊ'] ),
@@ -203,10 +201,8 @@
 				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
 				new CChar('哦', ['ㄜ','˙'] )
 			];
-			current_index = 15;
-			hightlight[current_index] = 'select';
+			text_init(canvas, cchars);
 
-			repaintText();
 		</script>
 	</body>
 </html>
