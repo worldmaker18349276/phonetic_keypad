@@ -12,7 +12,7 @@ function toggle_selector( bool ) {
 	}
 }
 
-function sel_load( page ) {
+function sel_load() {
 	sel_clear();
 	var sels = document.getElementsByClassName("selection");
 	var n = Math.min(selections.length-page*sels.length, sels.length);
@@ -29,13 +29,19 @@ function sel_clear() {
 		sels[i].innerHTML = '　';
 }
 
+function sel_init( sels ) {
+	page = 0;
+	selections = sels;
+	sel_load();
+}
+
 function sel_previous() {
 	page--;
-	sel_load(page);
+	sel_load();
 }
 
 function sel_next() {
 	page++;
-	sel_load(page);
+	sel_load();
 }
 
