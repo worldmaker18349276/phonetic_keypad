@@ -1,13 +1,15 @@
 var canvas;
-var text_size;
+var text_size; /*text height (px)*/
+var line_spacing;
 var total_cchar;
 var current_cchar;
 
 function repaintText() {
 	canvas.width = canvas.width;
 	var cx = canvas.getContext('2d');
-	var total_width = measureCChar(cx, text_size, total_cchar);
-	cx.translate(canvas.width/2-total_width/2, canvas.height/2);
+	var cchar_width = measureCChar(cx, text_size, total_cchar[0]);
+	var row_size = Math.floor(canvas.width/cchar_width);
+	cx.translate(0, text_size/2 + line_spacing/2);
 
 	var ind = total_cchar.indexOf(current_cchar);
 	bg_style = new Array(total_cchar.length);
