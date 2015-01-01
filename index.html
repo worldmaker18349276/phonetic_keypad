@@ -19,11 +19,11 @@
 					<div class="row1">
 						<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
 						<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
-						<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
-						<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
+						<button class="key" id="key03" onclick="keyin(this); sel()">ˇ</button>
+						<button class="key" id="key04" onclick="keyin(this); sel()">ˋ</button>
 						<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
-						<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
-						<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
+						<button class="key" id="key06" onclick="keyin(this); sel()">ˊ</button>
+						<button class="key" id="key07" onclick="keyin(this); sel()">˙</button>
 						<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
 						<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
 						<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
@@ -134,8 +134,9 @@
 		</div>
 
 		<script src="js/CChar.js"></script>
+		<script src="js/print.js"></script>
 		<script src="js/text.js"></script>
-		<script src="js/action.js"></script>
+		<script src="js/input.js"></script>
 		<script>
 			canvas = document.getElementById('text');
 			text_size = Math.round(canvas.height/3);
@@ -148,7 +149,7 @@
 			];
 			current_cchar = total_cchar[1];
 
-			repaintCChar();
+			repaintText();
 		</script>
 	</body>
 </html>

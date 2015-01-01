@@ -1,5 +1,5 @@
 .selector {
-	display: block;
+	display: none;
 	margin: 2px auto;
 	width: 704px; /* (selection.width + 2*row.margin)*11 */
 }
