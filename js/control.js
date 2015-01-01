@@ -80,6 +80,19 @@ function enter() {
 	text_repaint();
 }
 
+function dot() {
+	if ( input_mode == 'focus' )
+		text_insert(new CChar('　'));
+	else if ( input_mode == 'warning' || input_mode == 'edit' )
+		cchar_text[current_index] = new CChar('　');
+
+	toggle_selector(true);
+	sel_init(punctuation);
+
+	text_setmode('edit');
+	text_repaint();
+}
+
 function select( button ) {
 	if ( button.innerHTML != '　' ) {
 		toggle_selector(false);
