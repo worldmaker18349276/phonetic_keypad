@@ -18,8 +18,6 @@ function measureCChar( cx, size, cchar ) {
 	total_width += w0;
 	cx.restore();
 
-	total_width *= cchar.length;
-
 	return total_width;
 }
 
@@ -46,65 +44,62 @@ function printCChar( cx, size, cchar ) {
 	var w0 = cx.measureText('ㄅ').width;
 	cx.restore();
 
-	for ( var i=0; i<cchar.length; i++ ) {
+	// text
+	cx.save();
+	cx.font = f;
+	cx.translate(0, -h/2)
+	cx.fillText(cchar.text, 0, 0);
+	cx.restore();
+	cx.translate(s, 0);
 
-		// text
-		cx.save();
-		cx.font = f;
-		cx.translate(0, -h/2)
-		cx.fillText(cchar[i].text, 0, 0);
-		cx.restore();
-		cx.translate(s, 0);
+	// phone column
+	cx.save();
+	cx.font = f0;
+	cx.translate(0, -h0/2);
+	var col = cchar.getPhoneColumn();
+	switch ( col.length ) {
+		case 1:
+			if ( phone_lists[1].indexOf(col[0]) != -1 )
+				cx.fillText(col[0], 0,-s0/2);
+			else
+				cx.fillText(col[0], 0, s0/2);
+			break;
 
-		// phone column
-		cx.save();
-		cx.font = f0;
-		cx.translate(0, -h0/2);
-		var col = cchar[i].getPhoneColumn();
-		switch ( col.length ) {
-			case 1:
-				if ( phone_lists[1].indexOf(col[0]) != -1 )
-					cx.fillText(col[0], 0,-s0/2);
-				else
-					cx.fillText(col[0], 0, s0/2);
-				break;
+		case 2:
+			if ( phone_lists[1].indexOf(col[0]) != -1 && phone_lists[3].indexOf(col[1]) != -1 ) {
+				cx.fillText(col[0], 0,-s0*2/3);
+				cx.fillText(col[1], 0, s0*2/3);
+			} else {
+				cx.fillText(col[0], 0,-s0/2);
+				cx.fillText(col[1], 0, s0/2);
+			}
+			break;
 
-			case 2:
-				if ( phone_lists[1].indexOf(col[0]) != -1 && phone_lists[3].indexOf(col[1]) != -1 ) {
-					cx.fillText(col[0], 0,-s0*2/3);
-					cx.fillText(col[1], 0, s0*2/3);
-				} else {
-					cx.fillText(col[0], 0,-s0/2);
-					cx.fillText(col[1], 0, s0/2);
-				}
-				break;
+		case 3:
+			cx.fillText(col[0], 0,-s0);
+			cx.fillText(col[1], 0, 0);
+			cx.fillText(col[2], 0, s0);
+			break;
 
-			case 3:
-				cx.fillText(col[0], 0,-s0);
-				cx.fillText(col[1], 0, 0);
-				cx.fillText(col[2], 0, s0);
-				break;
-
-			case 4:
-				cx.fillText(col[0], 0,-s0*2);
-				cx.fillText(col[1], 0,-s0);
-				cx.fillText(col[2], 0, 0);
-				cx.fillText(col[3], 0, s0);
-				break;
-		}
-		cx.restore();
-		cx.translate(s0, 0);
-		
-		// phone side
-		cx.save();
-		cx.font = f0;
-		cx.translate(0, -h0/2);
-		var side = cchar[i].getPhoneSide();
-		if ( side )
-			cx.fillText(side, 0, 0);
-		cx.restore();
-		cx.translate(w0, 0);
+		case 4:
+			cx.fillText(col[0], 0,-s0*2);
+			cx.fillText(col[1], 0,-s0);
+			cx.fillText(col[2], 0, 0);
+			cx.fillText(col[3], 0, s0);
+			break;
 	}
+	cx.restore();
+	cx.translate(s0, 0);
+	
+	// phone side
+	cx.save();
+	cx.font = f0;
+	cx.translate(0, -h0/2);
+	var side = cchar.getPhoneSide();
+	if ( side )
+		cx.fillText(side, 0, 0);
+	cx.restore();
+	cx.translate(w0, 0);
 
 	cx.restore();
 }
@@ -129,10 +124,8 @@ function printBackGround( cx, size, st ) {
 	total_width += w0;
 	cx.restore();
 
-	for ( var i in st ) {
-		cx.save();
-		cx.fillStyle = st[i];
-		cx.fillRect(total_width*i, -h/2, w+m + w0+m0 + w0, h);
-		cx.restore();
-	}
+	cx.save();
+	cx.fillStyle = st;
+	cx.fillRect(0, -h/2, w+m + w0+m0 + w0, h);
+	cx.restore();
 }
