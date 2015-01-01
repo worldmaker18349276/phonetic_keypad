@@ -15,15 +15,15 @@
 				<canvas id="text" width="724px" height="270px"></canvas>
 			</div>
 			<div class="inputboard">
-				<div class="keyboard">
+				<div class="keyboard" id="keyboard">
 					<div class="row1">
 						<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
 						<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
-						<button class="key" id="key03" onclick="keyin(this); sel()">ˇ</button>
-						<button class="key" id="key04" onclick="keyin(this); sel()">ˋ</button>
+						<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
+						<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
 						<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
-						<button class="key" id="key06" onclick="keyin(this); sel()">ˊ</button>
-						<button class="key" id="key07" onclick="keyin(this); sel()">˙</button>
+						<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
+						<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
 						<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
 						<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
 						<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
@@ -71,7 +71,7 @@
 						<button class="key space" id="key44" onclick="space()">　</button>
 					</div>
 				</div>
-				<div class="selector">
+				<div class="selector" id="selector">
 					<div class="row">
 						<button class="selection" id="selection01" onclick="select(this)">　</button>
 						<button class="selection" id="selection02" onclick="select(this)">　</button>
@@ -125,9 +125,9 @@
 						<button class="selection" id="selection44" onclick="select(this)">　</button>
 					</div>
 					<div class="row5">
-						<button class="control" onclick="sel_previous()">上一頁</button>
-						<button class="control" onclick="sel_esc()">取消</button>
-						<button class="control" onclick="sel_next()">下一頁</button>
+						<button class="control" id="sel_previous" onclick="sel_previous()">上一頁</button>
+						<button class="control" id="sel_esc" onclick="esc()">取消</button>
+						<button class="control" id="sel_next" onclick="sel_next()">下一頁</button>
 					</div>
 				</div>
 			</div>
@@ -136,6 +136,7 @@
 		<script src="js/CChar.js"></script>
 		<script src="js/print.js"></script>
 		<script src="js/control.js"></script>
+		<script src="js/select.js"></script>
 		<script>
 			canvas = document.getElementById('text');
 			cchars = [

@@ -119,24 +119,46 @@ function space() {
 
 		text_setmode('edit');
 
-		sel();
+		enter();
 	}
 }
 
-function sel() {
+function enter() {
 	var current = cchar_text[current_index];
+	var sels = query(current);
 
-	if ( current.phones[1] === undefined && current.phones[2] === undefined && current.phones[3] === undefined ) {
+	if ( sels.length == 0 ) {
 		text_setmode('warning');
 	} else {
+		selections = sels;
+		toggle_selector(true);
+		sel_load(0);
 		text_setmode('edit');
-		// select
-		current.text = '？';
-		text_next();
-		text_setmode('focus');
 	}
 
 	text_repaint();
 }
 
+function select( button ) {
+	if ( button.innerHTML != '　' ) {
+		toggle_selector(false);
+
+		cchar_text[current_index].text = button.innerHTML;
+		text_next();
+
+		text_setmode('focus');
+		text_repaint();
+	}
+}
+
+function esc() {
+	toggle_selector(false);
+	cchar_text[current_index].deletePhone(0);
+	text_setmode('edit');
+	text_repaint();
+}
+
+function query( cchar ) {
+	return [ '爾', '耳', '洱', '餌', '邇', '珥', '駬', '薾', '鉺', '峏', '尒', '栮' ];
+}
 
