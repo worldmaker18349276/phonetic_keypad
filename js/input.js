@@ -1,20 +1,20 @@
 function keyin( button ) {
 	var phone = button.innerHTML;
-	current_cchar.putPhone(phone);
+	total_cchar[current_index].putPhone(phone);
 	repaintText();
 }
 
 function del() {
-	current_cchar.deletePhone();
+	total_cchar[current_index].deletePhone();
 	repaintText();
 }
 
 function space() {
-	current_cchar.deletePhone(0);
+	total_cchar[current_index].deletePhone(0);
 	repaintText();
 	sel();
 }
 
 function sel() {
-	alert(current_cchar.text + ': ' + current_cchar.phones.filter(String).join(' '));
+	alert(total_cchar[current_index].text + ': ' + total_cchar[current_index].phones.filter(String).join(' '));
 }

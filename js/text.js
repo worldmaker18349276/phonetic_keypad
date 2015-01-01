@@ -1,8 +1,11 @@
 var canvas;
 var text_size; /*text height (px)*/
 var line_spacing;
+
 var total_cchar;
-var current_cchar;
+var current_index = 0;
+var hightlight;
+
 
 function repaintText() {
 	canvas.width = canvas.width;
@@ -11,9 +14,9 @@ function repaintText() {
 	cx.save();
 	cx.translate(0, text_size/2 + line_spacing/2);
 
-	var offset = 0;
 	cx.save();
-	for ( var i=0; i<total_cchar.length; i++ ) {
+	var offset = 0;
+	for ( var i=0; i<=total_cchar.length; i++ ) {
 		var cchar_width = measureCChar(cx, text_size, total_cchar[i]);
 		offset += cchar_width;
 		if ( offset > canvas.width ) {
@@ -22,14 +25,28 @@ function repaintText() {
 			cx.save();
 			offset = cchar_width;
 		}
-		if ( total_cchar.indexOf(current_cchar) == i )
-			printBackGround(cx, text_size, 'LightGreen');
-			
-		printCChar(cx, text_size, total_cchar[i]);
+		if ( current_index == i )
+			if ( hightlight == 'warning' )
+				printBackGround(cx, text_size, 'Red');
+			else if ( hightlight == 'edit' )
+				printBackGround(cx, text_size, 'LightGreen');
+			else
+				printCursor(cx, text_size, 'Black');
+
+		if ( total_cchar[i] )
+			printCChar(cx, text_size, total_cchar[i]);
 		cx.translate(cchar_width, 0);
 	}
 	cx.restore();
 
 	cx.restore();
+}
+
+function text_del() {
+	total_cchar.splice(current_index, 1);
+}
+
+function text_insert( cchar ) {
+	total_cchar.splice(current_index, 0, cchar);
 }
 

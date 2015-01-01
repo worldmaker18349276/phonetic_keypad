@@ -129,3 +129,12 @@ function printBackGround( cx, size, st ) {
 	cx.fillRect(0, -h/2, w+m + w0+m0 + w0, h);
 	cx.restore();
 }
+
+function printCursor( cx, size, st ) {
+	cx.save();
+	cx.strokeStyle = st;
+	cx.lineTo(0, -size/2);
+	cx.lineTo(0, size/2);
+	cx.stroke();
+	cx.restore();
+}
