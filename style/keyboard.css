@@ -1,5 +1,7 @@
 .keyboard {
-	display: none;
+	display: block;
+	margin: 2px auto;
+	width: 744px; /* (key.width + 2*row.margin)*11 + 2*key.width/3 */
 }
 
 .keyboard .row1 {
@@ -7,7 +9,7 @@
 }
 .keyboard .row2 {
 	margin: 2px auto;
-	margin-left: 20px;
+	margin-left: 20px; /* key.width/3 */
 }
 .keyboard .row3 {
 	margin: 2px auto;
@@ -32,42 +34,47 @@
 	width: 300px;
 }
 
-#key01, #key12, #key23, #key33 {
+/*zhuyin*/
+#key01, #key12, #key23, #key34 {
 	background-color: Lime;
 }
-#key02, #key13, #key24, #key34 {
+#key02, #key13, #key24, #key35 {
 	background-color: LightGreen;
 }
-#key14, #key25, #key35 {
+#key14, #key25, #key36 {
 	background-color: Lime;
 }
-#key15, #key26, #key36 {
+#key15, #key26, #key37 {
 	background-color: LightGreen;
 }
-#key05, #key16, #key27, #key37 {
+#key05, #key16, #key27, #key38 {
 	background-color: Orchid;
 }
-#key17, #key28, #key38 {
+#key17, #key28, #key39 {
 	background-color: Plum;
 }
-#key18, #key29, #key39 {
+#key18, #key29, #key40 {
 	background-color: Yellow;
 }
-#key08, #key19, #key30, #key40 {
+#key08, #key19, #key30, #key41 {
 	background-color: Orange;
 }
-#key09, #key20, #key31, #key41 {
+#key09, #key20, #key31, #key42 {
 	background-color: PeachPuff;
 }
-#key10, #key21, #key32, #key42 {
+#key10, #key21, #key32, #key43 {
 	background-color: Orange;
 }
 #key11 {
 	background-color: PeachPuff;
 }
+
+/*tone*/
 #key03, #key04, #key06, #key07 {
 	background-color: LightGray;
 }
-#key22, #key43 {
+
+/*others keys*/
+#key22, #key33, #key44 {
 	background-color: LightGray;
 }
