@@ -1,0 +1,19 @@
+.selector {
+	display: block;
+}
+
+.selector .row {
+	margin: 2px auto;
+	width: 704px;
+}
+.selector .row5 {
+	margin: 2px auto;
+	width: 704px;
+}
+
+.selector .selection {
+	font-size: 40px;
+	font-family: "標楷體";
+	height: 60px;
+	width: 60px;
+}

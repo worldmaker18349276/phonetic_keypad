@@ -1,3 +1,7 @@
+.keyboard {
+	display: none;
+}
+
 .keyboard .row1 {
 	margin: 2px auto;
 }
@@ -18,13 +22,13 @@
 	width: 300px;
 }
 
-.key {
+.keyboard .key {
 	font-size: 40px;
 	font-family: "標楷體";
 	height: 60px;
 	width: 60px;
 }
-.space {
+.keyboard .space {
 	width: 300px;
 }
 
