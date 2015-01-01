@@ -1,5 +1,5 @@
 .selector {
-	display: none;
+	display: block;
 	margin: 2px auto;
 	width: 704px; /* (selection.width + 2*row.margin)*11 */
 }
@@ -9,6 +9,7 @@
 }
 .selector .row5 {
 	margin: 2px auto;
+	width: 552px; /* (control.width + 2*row.margin)*3 */
 }
 
 .selector .selection {
@@ -16,4 +17,11 @@
 	font-family: "標楷體";
 	height: 60px;
 	width: 60px;
+}
+
+.selector .control {
+	font-size: 40px;
+	font-family: "標楷體";
+	height: 60px;
+	width: 180px;
 }

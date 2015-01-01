@@ -1,5 +1,5 @@
 .keyboard {
-	display: block;
+	display: none;
 	margin: 2px auto;
 	width: 744px; /* (key.width + 2*row.margin)*11 + 2*key.width/3 */
 }
