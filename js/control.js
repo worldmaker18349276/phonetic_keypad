@@ -119,19 +119,23 @@ function backspace() {
 }
 
 function ctrl_previous() {
-	if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+	if ( input_mode == 'focus' ) {
+		text_privous();
+		text_repaint();
+	} else if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
 		text_edit_abandon();
+		text_repaint();
 	}
-	text_privous();
-	text_repaint();
 }
 
 function ctrl_next() {
-	if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+	if ( input_mode == 'focus' ) {
+		text_next();
+		text_repaint();
+	} else if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
 		text_edit_abandon();
+		text_repaint();
 	}
-	text_next();
-	text_repaint();
 }
 
 function select( button ) {

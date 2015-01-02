@@ -25,65 +25,77 @@
 }
 
 
-.keyboard .key {
+.keyboard .key, .keyboard .control {
 	font-size: 40px;
 	font-family: "標楷體";
 	height: 60px;
 	width: 60px;
 }
 
-#space {
+#key_space {
 	width: 300px;
 	margin-left: 222px;
 }
 
-#arrow {
+#key_left, #key_right {
 	width: 100px;
 }
 
 
 /*zhuyin*/
-#key01, #key12, #key23, #key34 {
+#ㄅ, #ㄆ, #ㄇ, #ㄈ {
 	background-color: Lime;
 }
-#key02, #key13, #key24, #key35 {
+#ㄉ, #ㄊ, #ㄋ, #ㄌ {
 	background-color: LightGreen;
 }
-#key14, #key25, #key36 {
+#ㄍ, #ㄎ, #ㄏ {
 	background-color: Lime;
 }
-#key15, #key26, #key37 {
+#ㄐ, #ㄑ, #ㄒ {
 	background-color: LightGreen;
 }
-#key05, #key16, #key27, #key38 {
+#ㄓ, #ㄔ, #ㄕ, #ㄖ {
 	background-color: Orchid;
 }
-#key17, #key28, #key39 {
+#ㄗ, #ㄘ, #ㄙ {
 	background-color: Plum;
 }
-#key18, #key29, #key40 {
+#ㄧ, #ㄨ, #ㄩ {
 	background-color: Yellow;
 }
-#key08, #key19, #key30, #key41 {
+#ㄚ, #ㄛ, #ㄜ, #ㄝ {
 	background-color: Orange;
 }
-#key09, #key20, #key31, #key42 {
+#ㄞ, #ㄟ, #ㄠ, #ㄡ {
 	background-color: PeachPuff;
 }
-#key10, #key21, #key32, #key43 {
+#ㄢ, #ㄣ, #ㄤ, #ㄥ {
 	background-color: Orange;
 }
-#key11 {
+#ㄦ {
 	background-color: PeachPuff;
 }
 
 /*tone*/
-#key03, #key04, #key06, #key07 {
+#ˇ, #ˋ, #ˊ, #˙ {
 	background-color: LightGray;
 }
 
 /*others keys*/
-#key22, #key33, #space, #arrow {
+#key_space {
 	background-color: LightGray;
+}
+
+#key_back {
+	background-color: Red;
+}
+
+#key_dot {
+	background-color: SaddleBrown;
+}
+
+#key_left, #key_right {
+	background-color: Blue;
 }
 
