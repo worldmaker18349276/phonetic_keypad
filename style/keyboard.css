@@ -1,4 +1,5 @@
 .keyboard {
+
 	display: block;
 	margin: 2px auto;
 	width: 744px; /* (key.width + 2*row.margin)*11 + 2*key.width/3 */
@@ -20,9 +21,9 @@
 	margin-left: 60px;
 }
 .keyboard .row5 {
-	margin: 2px auto;
-	width: 300px;
+	margin: 2px;
 }
+
 
 .keyboard .key {
 	font-size: 40px;
@@ -30,9 +31,16 @@
 	height: 60px;
 	width: 60px;
 }
-.keyboard .space {
+
+#space {
 	width: 300px;
+	margin-left: 222px;
 }
+
+#arrow {
+	width: 100px;
+}
+
 
 /*zhuyin*/
 #key01, #key12, #key23, #key34 {
@@ -75,6 +83,7 @@
 }
 
 /*others keys*/
-#key22, #key33, #key44 {
+#key22, #key33, #space, #arrow {
 	background-color: LightGray;
 }
+

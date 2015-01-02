@@ -118,6 +118,22 @@ function backspace() {
 	}
 }
 
+function ctrl_previous() {
+	if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+		text_edit_abandon();
+	}
+	text_privous();
+	text_repaint();
+}
+
+function ctrl_next() {
+	if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+		text_edit_abandon();
+	}
+	text_next();
+	text_repaint();
+}
+
 function select( button ) {
 	if ( button.innerHTML != '　' ) {
 		toggle_selector(false);
