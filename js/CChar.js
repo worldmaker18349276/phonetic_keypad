@@ -38,7 +38,7 @@ CChar.prototype.getPhoneString = function() {
 		if ( this.phones[i] !== undefined )
 			str += this.phones[i];
 	if ( this.phones[0] !== undefined )
-		str += this.phones[i];
+		str += this.phones[0];
 	return str;
 }
 
