@@ -25,24 +25,22 @@ function ctrl_sel_punctuation() {
 
 
 
-function keyin( button ) {
+function keyin( phone ) {
 	if ( input_mode == 'focus' )
 		text_edit_start();
 	text_edit_editing();
 
-	var phone = button.innerHTML;
 	text_current().deletePhone(0);
 	text_current().putPhone(phone);
 
 	text_repaint();
 }
 
-function tone( button ) {
+function tone( tone ) {
 	if ( input_mode == 'focus' ) {
 
 		text_edit_start();
 
-		var tone = button.innerHTML;
 		text_current().text = tone;
 
 		text_edit_finish();
@@ -52,7 +50,6 @@ function tone( button ) {
 
 		text_edit_editing();
 
-		var tone = button.innerHTML;
 		text_current().putPhone(tone);
 
 		ctrl_edit_confirm();
