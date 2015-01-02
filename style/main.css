@@ -3,6 +3,8 @@
 	height: 270px;
 	border: 2px solid Gray;
 	border-radius: 10px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .inputboard {

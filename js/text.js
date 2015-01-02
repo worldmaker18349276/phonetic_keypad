@@ -24,8 +24,10 @@ function _text_insert( cchar ) {
 
 function text_init( canvas, cchars ) {
 	text_canvas = canvas;
+	text_canvas.width = 764;
+	text_canvas.style.width = '764px';
 	text_size = 36;
-	line_spacing = text_size/6;
+	line_spacing = Math.round(text_size/6);
 
 	current_index = cchars.length;
 	input_mode = 'focus';
@@ -43,18 +45,23 @@ function text_init( canvas, cchars ) {
 }
 
 function text_repaint() {
-	var current_row = Math.ceil((current_index+1)/row_size)-1;
-	while ( current_row < row_offset )
-		row_offset--;
-	while ( current_row >= row_offset+max_row_num )
-		row_offset++;
+	var row_num = Math.ceil(cchar_text.length/row_size);
+	var canvas_height = (text_size+line_spacing)*row_num;
+	text_canvas.height = canvas_height;
+	text_canvas.style.height = canvas_height+'px';
+
+	// var current_row = Math.ceil((current_index+1)/row_size)-1;
+	// while ( current_row < row_offset )
+	// 	row_offset--;
+	// while ( current_row >= row_offset+max_row_num )
+	// 	row_offset++;
 
 
 	var cx = text_canvas.getContext('2d');
 	cx.setTransform(1,0,0,1,0,0);
 	cx.clearRect(0, 0, text_canvas.width, text_canvas.height);
 
-	cx.translate(0, -(text_size+line_spacing)*row_offset);
+	// cx.translate(0, -(text_size+line_spacing)*row_offset);
 
 	for ( var i in hightlight )
 		delete hightlight[i];
