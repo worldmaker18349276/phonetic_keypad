@@ -5,20 +5,16 @@ var punctuation = [
 '》', '（', '）', '＜', '＞', '◎', '○', '●',
 '⊕', '⊙', '△', '▲', '☆', '★', '◇', '◆', '□' ];
 
-function query_char( cchar ) {
-	if ( cchar.phones[2] === undefined &&
-		cchar.phones[3] === undefined )
-		return new Array();
-	return [
-	 '爾', '耳', '洱', '餌', '邇', '珥', '駬', '薾',
-	 '鉺', '峏', '尒', '栮', '爾', '耳', '洱', '餌',
-	 '邇', '珥', '駬', '薾', '鉺', '峏', '尒', '栮',
-	 '爾', '耳', '洱', '餌', '邇', '珥', '駬', '薾',
-	 '鉺', '峏', '尒', '栮', '爾', '耳', '洱', '餌',
-	 '邇', '珥', '駬', '薾', '鉺', '峏', '尒', '栮',
-	 '爾', '耳', '洱', '餌', '邇', '珥', '駬', '薾',
-	 '鉺', '峏', '尒', '栮', '爾', '耳', '洱', '餌',
-	 '邇', '珥', '駬', '薾', '鉺', '峏', '尒', '栮',
-	 '爾', '耳', '洱', '餌', '邇', '珥', '駬', '薾',
-	 '鉺', '峏', '尒', '栮', '爾', '耳', '洱', '餌' ];
+
+
+function query_char( cchar, callback ) {
+	var para = 'zhuyin='+base64encode(cchar.getPhoneString());
+	
+	var oXHR = new XMLHttpRequest();
+	oXHR.open("POST", "phonetab.php", false);
+	oXHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	oXHR.send(para);
+	
+	var sels = base64decode(oXHR.responseText).split(' ');
+	return sels;
 }

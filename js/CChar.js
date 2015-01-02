@@ -32,6 +32,16 @@ CChar.prototype.getPhoneSide = function() {
 			return this.phones[0];
 }
 
+CChar.prototype.getPhoneString = function() {
+	var str = '';
+	for ( var i=1; i<4; i++ )
+		if ( this.phones[i] !== undefined )
+			str += this.phones[i];
+	if ( this.phones[0] !== undefined )
+		str += this.phones[i];
+	return str;
+}
+
 CChar.prototype.putPhone = function( phone ) {
 	for ( var i=0; i<4; i++ )
 		if ( phone_lists[i].indexOf(phone) != -1 )
