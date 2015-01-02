@@ -138,6 +138,28 @@ function ctrl_next() {
 	}
 }
 
+function ctrl_up() {
+	if ( input_mode == 'focus' ) {
+		for ( var i=0; i<row_size; i++ )
+			text_privous();
+		text_repaint();
+	} else if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+		text_edit_abandon();
+		text_repaint();
+	}
+}
+
+function ctrl_down() {
+	if ( input_mode == 'focus' ) {
+		for ( var i=0; i<row_size; i++ )
+			text_next();
+		text_repaint();
+	} else if ( input_mode == 'edit' ||  input_mode == 'warning' ) {
+		text_edit_abandon();
+		text_repaint();
+	}
+}
+
 function select( button ) {
 	if ( button.innerHTML != '　' ) {
 		toggle_selector(false);

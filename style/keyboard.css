@@ -21,7 +21,8 @@
 	margin-left: 60px;
 }
 .keyboard .row5 {
-	margin: 2px;
+	margin: 2px auto;
+	width: 720px;
 }
 
 
@@ -34,13 +35,14 @@
 
 #key_space {
 	width: 300px;
-	margin-left: 222px;
 }
 
-#key_left, #key_right {
+#key_up, #key_down, #key_left, #key_right {
 	width: 100px;
 }
 
+
+/* color setting */
 
 /*zhuyin*/
 #ㄅ, #ㄆ, #ㄇ, #ㄈ {
@@ -95,7 +97,7 @@
 	background-color: SaddleBrown;
 }
 
-#key_left, #key_right {
+#key_up, #key_down, #key_left, #key_right {
 	background-color: Blue;
 }
 

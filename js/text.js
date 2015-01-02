@@ -1,6 +1,7 @@
 var text_canvas;
 var text_size;
 var line_spacing;
+var row_size;
 
 var end_cchar = new CChar('　');
 var cchar_text;
@@ -29,6 +30,10 @@ function text_init( canvas, cchars ) {
 	cchar_text = cchars;
 	cchar_text.push(end_cchar);
 	hightlight = new Array();
+
+	var cx = text_canvas.getContext('2d');
+	var cchar_width = measureCChar(cx, text_size, cchar_text[0]);
+	row_size = Math.floor(text_canvas.width/cchar_width);
 
 	text_repaint();
 }
