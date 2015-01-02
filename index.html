@@ -19,11 +19,11 @@
 					<div class="row1">
 						<button class="key" id="key01" onclick="keyin(this)">ㄅ</button>
 						<button class="key" id="key02" onclick="keyin(this)">ㄉ</button>
-						<button class="key" id="key03" onclick="keyin(this); enter()">ˇ</button>
-						<button class="key" id="key04" onclick="keyin(this); enter()">ˋ</button>
+						<button class="key" id="key03" onclick="tone(this)">ˇ</button>
+						<button class="key" id="key04" onclick="tone(this)">ˋ</button>
 						<button class="key" id="key05" onclick="keyin(this)">ㄓ</button>
-						<button class="key" id="key06" onclick="keyin(this); enter()">ˊ</button>
-						<button class="key" id="key07" onclick="keyin(this); enter()">˙</button>
+						<button class="key" id="key06" onclick="tone(this)">ˊ</button>
+						<button class="key" id="key07" onclick="tone(this)">˙</button>
 						<button class="key" id="key08" onclick="keyin(this)">ㄚ</button>
 						<button class="key" id="key09" onclick="keyin(this)">ㄞ</button>
 						<button class="key" id="key10" onclick="keyin(this)">ㄢ</button>
@@ -126,7 +126,7 @@
 					</div>
 					<div class="row5">
 						<button class="control" id="sel_previous" onclick="sel_previous()">上一頁</button>
-						<button class="control" id="sel_esc" onclick="esc()">取消</button>
+						<button class="control" id="sel_esc" onclick="sel_esc()">取消</button>
 						<button class="control" id="sel_next" onclick="sel_next()">下一頁</button>
 					</div>
 				</div>
@@ -135,9 +135,9 @@
 
 		<script src="js/CChar.js"></script>
 		<script src="js/print.js"></script>
+		<script src="js/query.js"></script>
 		<script src="js/text.js"></script>
 		<script src="js/select.js"></script>
-		<script src="js/query.js"></script>
 		<script src="js/control.js"></script>
 		<script>
 			canvas = document.getElementById('text');

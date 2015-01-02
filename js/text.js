@@ -2,11 +2,21 @@ var text_canvas;
 var text_size;
 var line_spacing;
 
-var empty_cchar = new CChar('　');
+var end_cchar = new CChar('　');
 var cchar_text;
 var hightlight;
 var current_index = 0;
-var input_mode; /* focus, edit, (select) */
+var input_mode; /* focus, edit, warning, (select) */
+
+
+function _text_del() {
+	cchar_text.splice(current_index, 1);
+}
+
+function _text_insert( cchar ) {
+	cchar_text.splice(current_index, 0, cchar);
+}
+
 
 
 function text_init( canvas, cchars ) {
@@ -17,9 +27,8 @@ function text_init( canvas, cchars ) {
 	current_index = cchars.length;
 	input_mode = 'focus';
 	cchar_text = cchars;
-	cchar_text.push(empty_cchar);
+	cchar_text.push(end_cchar);
 	hightlight = new Array();
-	hightlight[current_index] = 'focus';
 
 	text_repaint();
 }
@@ -27,31 +36,91 @@ function text_init( canvas, cchars ) {
 function text_repaint() {
 	var cx = text_canvas.getContext('2d');
 	cx.clearRect(0, 0, text_canvas.width, text_canvas.height);
+	for ( var i in hightlight )
+		delete hightlight[i];
+	hightlight[current_index] = input_mode;
 	printCChars(cx, text_size, line_spacing, cchar_text, hightlight);
 }
 
+function text_current() {
+	return cchar_text[current_index];
+}
+
+
+
+// method for edit mode
+function text_edit_start() {
+	if ( input_mode == 'focus' ) {
+		_text_insert(new CChar('　'));
+		input_mode = 'edit';
+	}
+}
+
+function text_edit_warning() {
+	if ( input_mode == 'edit' ) {
+		input_mode = 'warning';
+	}
+}
+
+function text_edit_editing() {
+	if ( input_mode == 'warning' ) {
+		input_mode = 'edit';
+	}
+}
+
+function text_edit_abandon() {
+	if ( input_mode == 'edit' || input_mode == 'warning' ) {
+		_text_del();
+		input_mode = 'focus';
+	}
+}
+
+function text_edit_finish() {
+	if ( input_mode == 'edit' || input_mode == 'warning' ) {
+		current_index++;
+		input_mode = 'focus';
+	}
+}
+
+
+
+// only work on focus mode
 function text_del() {
-	cchar_text.splice(current_index, 1);
+	if ( input_mode == 'focus' ) {
+		if ( current_index < cchar_text.length-1 ) {
+			_text_del();
+		}
+	}
+}
+
+function text_backspace() {
+	if ( input_mode == 'focus' ) {
+		if ( current_index > 0 ) {
+			current_index--;
+			_text_del();
+		}
+	}
 }
 
 function text_insert( cchar ) {
-	cchar_text.splice(current_index, 0, cchar);
+	if ( input_mode == 'focus' ) {
+		_text_insert(cchar);
+		current_index++;
+	}
 }
 
 function text_privous() {
-	if ( current_index > 0 )
-		current_index--;
+	if ( input_mode == 'focus' ) {
+		if ( current_index > 0 ) {
+			current_index--;
+		}
+	}
 }
 
 function text_next() {
-	if ( current_index < cchar_text.length-1 )
-		current_index++;
+	if ( input_mode == 'focus' ) {
+		if ( current_index < cchar_text.length-1 ) {
+			current_index++;
+		}
+	}
 }
-
-function text_setmode( mode ) {
-	input_mode = mode;
-	for ( var i in hightlight )
-		delete hightlight[i];
-	hightlight[current_index] = mode;
-}
-

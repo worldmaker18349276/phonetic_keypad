@@ -1,44 +1,61 @@
+function ctrl_edit_confirm() {
+	var sels = query_char(text_current());
+
+	if ( sels.length == 0 ) {
+
+		text_edit_warning();
+
+	}else if ( sels.length == 1 ) {
+
+		text_current().text = sels[0];
+		text_edit_finish();
+
+	} else {
+
+		toggle_selector(true);
+		sel_init(sels);
+
+	}
+}
+
+function ctrl_sel_punctuation() {
+	toggle_selector(true);
+	sel_init(punctuation);
+}
+
+
+
 function keyin( button ) {
 	if ( input_mode == 'focus' )
-		text_insert(new CChar('　'));
-	else if ( input_mode == 'warning' )
-		cchar_text[current_index].deletePhone(0);
+		text_edit_start();
+	text_edit_editing();
 
 	var phone = button.innerHTML;
-	cchar_text[current_index].putPhone(phone);
-
-	text_setmode('edit');
+	text_current().deletePhone(0);
+	text_current().putPhone(phone);
 
 	text_repaint();
 }
 
-function backspace() {
+function tone( button ) {
 	if ( input_mode == 'focus' ) {
 
-		if ( current_index != 0 ) {
-			text_privous();
-			text_del();
-		}
-		text_setmode('focus');
+		text_edit_start();
 
+		var tone = button.innerHTML;
+		text_current().text = tone;
+
+		text_edit_finish();
 		text_repaint();
 
 	} else if ( input_mode == 'edit' || input_mode == 'warning' ) {
 
-		var current = cchar_text[current_index];
-		current.deletePhone();
+		text_edit_editing();
 
-		var remain = false;
-		for ( var i in current.phones )
-			remain = true;
+		var tone = button.innerHTML;
+		text_current().putPhone(tone);
 
-		if ( !remain ) {
-			text_del();
-			text_setmode('focus');
-		} else {
-			text_setmode('edit');
-		}
-
+		ctrl_edit_confirm();
 		text_repaint();
 
 	}
@@ -47,68 +64,82 @@ function backspace() {
 function space() {
 	if ( input_mode == 'focus' ) {
 
-		text_insert(new CChar('　'));
-		text_next();
+		text_edit_start();
 
-		text_setmode('focus');
+		text_current().text = '　';
 
+		text_edit_finish();
 		text_repaint();
 
 	} else if ( input_mode == 'edit' || input_mode == 'warning' ) {
 		
-		cchar_text[current_index].deletePhone(0);
+		text_edit_editing();
 
-		text_setmode('edit');
+		text_current().deletePhone(0);
 
-		enter();
+		ctrl_edit_confirm();
+		text_repaint();
+
 	}
-}
-
-function enter() {
-	var current = cchar_text[current_index];
-	var sels = query_char(current);
-
-	if ( sels.length == 0 ) {
-		text_setmode('warning');
-	} else {
-		toggle_selector(true);
-		sel_init(sels);
-
-		text_setmode('edit');
-	}
-
-	text_repaint();
 }
 
 function dot() {
-	if ( input_mode == 'focus' )
-		text_insert(new CChar('　'));
-	else if ( input_mode == 'warning' || input_mode == 'edit' )
-		cchar_text[current_index] = new CChar('　');
+	if ( input_mode == 'warning' || input_mode == 'edit' )
+		text_edit_abandon();
 
-	toggle_selector(true);
-	sel_init(punctuation);
-
-	text_setmode('edit');
+	ctrl_sel_punctuation();
 	text_repaint();
+}
+
+function backspace() {
+	if ( input_mode == 'focus' ) {
+
+		text_backspace();
+		text_repaint();
+
+
+	} else if ( input_mode == 'edit' || input_mode == 'warning' ) {
+
+		text_current().deletePhone();
+
+		var remain = false;
+		for ( var i in text_current().phones )
+			if ( text_current().phones[i] !== undefined )
+				remain = true;
+
+		if ( !remain ) {
+			text_edit_abandon();
+		} else {
+			text_edit_editing();
+		}
+
+		text_repaint();
+
+	}
 }
 
 function select( button ) {
 	if ( button.innerHTML != '　' ) {
 		toggle_selector(false);
 
-		cchar_text[current_index].text = button.innerHTML;
-		text_next();
+		if ( input_mode == 'focus' ) {
+			text_insert(new CChar(button.innerHTML));
+		} else if ( input_mode == 'edit' ) {
+			text_current().text = button.innerHTML;
+			text_edit_finish();
+		}
 
-		text_setmode('focus');
 		text_repaint();
 	}
 }
 
-function esc() {
+function sel_esc() {
 	toggle_selector(false);
-	cchar_text[current_index].deletePhone(0);
-	text_setmode('edit');
+
+	if ( input_mode == 'edit' ) {
+		text_current().deletePhone(0);
+	}
+
 	text_repaint();
 }
 
