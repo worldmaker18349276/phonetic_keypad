@@ -1,9 +1,8 @@
 var text_canvas;
 var text_size;
 var line_spacing;
+var canvas_width;
 var row_size;
-var max_row_num;
-var row_offset;
 
 var end_cchar = new CChar('　');
 var cchar_text;
@@ -24,8 +23,6 @@ function _text_insert( cchar ) {
 
 function text_init( canvas, cchars ) {
 	text_canvas = canvas;
-	text_canvas.width = 764;
-	text_canvas.style.width = '764px';
 	text_size = 36;
 	line_spacing = Math.round(text_size/6);
 
@@ -35,11 +32,12 @@ function text_init( canvas, cchars ) {
 	cchar_text.push(end_cchar);
 	hightlight = new Array();
 
+	canvas_width = 764;
+	text_canvas.width = canvas_width;
+	text_canvas.style.width = canvas_width+'px';
 	var cx = text_canvas.getContext('2d');
 	var cchar_width = measureCChar(cx, text_size, cchar_text[0]);
 	row_size = Math.floor(text_canvas.width/cchar_width);
-	max_row_num = Math.floor(text_canvas.height/(text_size+line_spacing));
-	row_offset = 0;
 
 	text_repaint();
 }
@@ -50,18 +48,9 @@ function text_repaint() {
 	text_canvas.height = canvas_height;
 	text_canvas.style.height = canvas_height+'px';
 
-	// var current_row = Math.ceil((current_index+1)/row_size)-1;
-	// while ( current_row < row_offset )
-	// 	row_offset--;
-	// while ( current_row >= row_offset+max_row_num )
-	// 	row_offset++;
-
-
 	var cx = text_canvas.getContext('2d');
 	cx.setTransform(1,0,0,1,0,0);
 	cx.clearRect(0, 0, text_canvas.width, text_canvas.height);
-
-	// cx.translate(0, -(text_size+line_spacing)*row_offset);
 
 	for ( var i in hightlight )
 		delete hightlight[i];

@@ -1,6 +1,6 @@
 .displayer {
 	width: 764px;
-	height: 270px;
+	height: 312px;
 	border: 2px solid Gray;
 	border-radius: 10px;
 	overflow-x: hidden;
@@ -9,7 +9,7 @@
 
 .inputboard {
 	width: 764px;
-	height: 324px;
+	height: 312px;
 	border: 2px solid Gray;
 	border-radius: 5px;
 }
