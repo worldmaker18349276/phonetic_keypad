@@ -1,4 +1,4 @@
-function ctrl_edit_confirm() {
+function _edit_confirm() {
 	var sels = query_char(text_current());
 
 	if ( sels.length == 0 ) {
@@ -12,19 +12,14 @@ function ctrl_edit_confirm() {
 
 	} else {
 
-		toggle_selector(true);
+		toggle_inputboard('selector');
 		sel_init(sels);
 
 	}
 }
 
-function ctrl_sel_punctuation() {
-	toggle_selector(true);
-	sel_init(punctuation);
-}
 
-
-
+// action
 function keyin( phone ) {
 	if ( input_mode == 'focus' )
 		text_edit_start();
@@ -52,7 +47,7 @@ function tone( tone ) {
 
 		text_current().putPhone(tone);
 
-		ctrl_edit_confirm();
+		_edit_confirm();
 		text_repaint();
 
 	}
@@ -74,7 +69,7 @@ function space() {
 
 		text_current().deletePhone(0);
 
-		ctrl_edit_confirm();
+		_edit_confirm();
 		text_repaint();
 
 	}
@@ -84,7 +79,9 @@ function dot() {
 	if ( input_mode == 'warning' || input_mode == 'edit' )
 		text_edit_abandon();
 
-	ctrl_sel_punctuation();
+	toggle_inputboard('selector');
+	sel_init(punctuation);
+
 	text_repaint();
 }
 
@@ -115,7 +112,7 @@ function backspace() {
 	}
 }
 
-function ctrl_previous() {
+function left() {
 	if ( input_mode == 'focus' ) {
 		text_privous();
 		text_repaint();
@@ -125,7 +122,7 @@ function ctrl_previous() {
 	}
 }
 
-function ctrl_next() {
+function right() {
 	if ( input_mode == 'focus' ) {
 		text_next();
 		text_repaint();
@@ -135,7 +132,7 @@ function ctrl_next() {
 	}
 }
 
-function ctrl_up() {
+function up() {
 	if ( input_mode == 'focus' ) {
 		for ( var i=0; i<row_size; i++ )
 			text_privous();
@@ -146,7 +143,7 @@ function ctrl_up() {
 	}
 }
 
-function ctrl_down() {
+function down() {
 	if ( input_mode == 'focus' ) {
 		for ( var i=0; i<row_size; i++ )
 			text_next();
@@ -156,29 +153,3 @@ function ctrl_down() {
 		text_repaint();
 	}
 }
-
-function select( button ) {
-	if ( button.innerHTML != '　' ) {
-		toggle_selector(false);
-
-		if ( input_mode == 'focus' ) {
-			text_insert(new CChar(button.innerHTML));
-		} else if ( input_mode == 'edit' ) {
-			text_current().text = button.innerHTML;
-			text_edit_finish();
-		}
-
-		text_repaint();
-	}
-}
-
-function sel_esc() {
-	toggle_selector(false);
-
-	if ( input_mode == 'edit' ) {
-		text_current().deletePhone(0);
-	}
-
-	text_repaint();
-}
-

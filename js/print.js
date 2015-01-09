@@ -1,3 +1,9 @@
+var hightlight_style = {
+	warning: 'Red',
+	edit: 'LightGreen',
+	select: 'Blue'
+};
+
 function printCChars( cx, text_size, line_spacing, total_cchar, hightlight ) {
 	cx.save();
 	cx.translate(0, text_size/2 + line_spacing/2);
@@ -14,14 +20,10 @@ function printCChars( cx, text_size, line_spacing, total_cchar, hightlight ) {
 			offset = cchar_width;
 		}
 		if ( hightlight )
-			if ( hightlight[i] == 'warning' )
-				printBackGround(cx, text_size, 'Red');
-			else if ( hightlight[i] == 'edit' )
-				printBackGround(cx, text_size, 'LightGreen');
-			else if ( hightlight[i] == 'select' )
-				printBackGround(cx, text_size, 'Blue');
-			else if ( hightlight[i] == 'focus' )
-				printCursor(cx, text_size, 'Black');
+			if ( hightlight[i] == 'focus' )
+				printCursor(cx, text_size, cchar_width);
+			else if ( hightlight_style[ hightlight[i] ] )
+				printBackGround(cx, text_size, cchar_width, hightlight_style[ hightlight[i] ]);
 
 		if ( total_cchar[i] )
 			printCChar(cx, text_size, total_cchar[i]);
@@ -33,27 +35,31 @@ function printCChars( cx, text_size, line_spacing, total_cchar, hightlight ) {
 }
 
 
+var CChar_width = [];
 function measureCChar( cx, size, cchar ) {
-	var total_width = 0;
-	cx.save();
-	cx.textAlign = 'left';
-	cx.textBaseline = 'top';
+	if ( CChar_width[size] === undefined ) {
+		CChar_width[size] = 0;
+		
+		cx.save();
+		cx.textAlign = 'left';
+		cx.textBaseline = 'top';
 
-	var h = size;
-	var m = -Math.round(h/10);
-	cx.font = h+'px 標楷體';
-	var w = cx.measureText('文').width;
-	total_width += w+m;
+		var h = size;
+		var m = -Math.round(h/10);
+		cx.font = h+'px 標楷體';
+		var w = cx.measureText('文').width;
+		CChar_width[size] += w+m;
 
-	var h0 = Math.round(size/3.3);
-	var m0 = -Math.round(h0/10);
-	cx.font = h0+'px 標楷體';
-	var w0 = cx.measureText('ㄅ').width;
-	total_width += w0+m0;
-	total_width += w0;
-	cx.restore();
+		var h0 = Math.round(size/3.3);
+		var m0 = -Math.round(h0/10);
+		cx.font = h0+'px 標楷體';
+		var w0 = cx.measureText('ㄅ').width;
+		CChar_width[size] += w0+m0;
+		CChar_width[size] += w0;
+		cx.restore();
+	}
 
-	return total_width;
+	return CChar_width[size];
 }
 
 function printCChar( cx, size, cchar ) {
@@ -139,35 +145,16 @@ function printCChar( cx, size, cchar ) {
 	cx.restore();
 }
 
-function printBackGround( cx, size, st ) {
-	var total_width = 0;
-	cx.save();
-	cx.textAlign = 'left';
-	cx.textBaseline = 'top';
-
-	var h = size;
-	var m = -Math.round(h/10);
-	cx.font = h+'px 標楷體';
-	var w = cx.measureText('文').width;
-	total_width += w+m;
-
-	var h0 = Math.round(size/3.3);
-	var m0 = -Math.round(h0/10);
-	cx.font = h0+'px 標楷體';
-	var w0 = cx.measureText('ㄅ').width;
-	total_width += w0+m0;
-	total_width += w0;
-	cx.restore();
-
+function printBackGround( cx, size, width, st ) {
 	cx.save();
 	cx.fillStyle = st;
-	cx.fillRect(0, -h/2, w+m + w0+m0 + w0, h);
+	cx.fillRect(0, -size/2, width, size);
 	cx.restore();
 }
 
-function printCursor( cx, size, st ) {
+function printCursor( cx, size, width ) {
 	cx.save();
-	cx.strokeStyle = st;
+	cx.strokeStyle = 'Black';
 	cx.beginPath();
 	cx.moveTo(0, -size/2);
 	cx.lineTo(0, size/2);

@@ -1,7 +1,6 @@
 var text_canvas;
 var text_size;
 var line_spacing;
-var canvas_width;
 var row_size;
 
 var end_cchar = new CChar('　');
@@ -10,7 +9,11 @@ var hightlight;
 var current_index = 0;
 var input_mode; /* focus, edit, warning, (select) */
 
+var default_text_size = 36;
+var default_canvas_width = 764;
 
+
+// inner method
 function _text_del() {
 	cchar_text.splice(current_index, 1);
 }
@@ -19,11 +22,29 @@ function _text_insert( cchar ) {
 	cchar_text.splice(current_index, 0, cchar);
 }
 
+function _text_canvas_width( canvas_width ) {
+	text_canvas.width = canvas_width;
+	text_canvas.style.width = canvas_width+'px';
+	var cx = text_canvas.getContext('2d');
+	var cchar_width = measureCChar(cx, text_size, end_cchar);
+	row_size = Math.floor(text_canvas.width/cchar_width);
+}
+
+function _text_canvas_height( canvas_height ) {
+	text_canvas.height = canvas_height;
+	text_canvas.style.height = canvas_height+'px';
+}
+
+function _text_canvas_clear( cx ) {
+	cx.setTransform(1,0,0,1,0,0);
+	cx.clearRect(0, 0, text_canvas.width, text_canvas.height);
+}
+
 
 
 function text_init( canvas, cchars ) {
 	text_canvas = canvas;
-	text_size = 36;
+	text_size = default_text_size;
 	line_spacing = Math.round(text_size/6);
 
 	current_index = cchars.length;
@@ -32,25 +53,17 @@ function text_init( canvas, cchars ) {
 	cchar_text.push(end_cchar);
 	hightlight = new Array();
 
-	canvas_width = 764;
-	text_canvas.width = canvas_width;
-	text_canvas.style.width = canvas_width+'px';
-	var cx = text_canvas.getContext('2d');
-	var cchar_width = measureCChar(cx, text_size, cchar_text[0]);
-	row_size = Math.floor(text_canvas.width/cchar_width);
+	_text_canvas_width(default_canvas_width);
 
 	text_repaint();
 }
 
 function text_repaint() {
+	var cx = text_canvas.getContext('2d');
 	var row_num = Math.ceil(cchar_text.length/row_size);
 	var canvas_height = (text_size+line_spacing)*row_num;
-	text_canvas.height = canvas_height;
-	text_canvas.style.height = canvas_height+'px';
-
-	var cx = text_canvas.getContext('2d');
-	cx.setTransform(1,0,0,1,0,0);
-	cx.clearRect(0, 0, text_canvas.width, text_canvas.height);
+	_text_canvas_height(canvas_height);
+	_text_canvas_clear(cx);
 
 	for ( var i in hightlight )
 		delete hightlight[i];
@@ -100,7 +113,7 @@ function text_edit_finish() {
 
 
 
-// only work on focus mode
+// method for focus mode
 function text_del() {
 	if ( input_mode == 'focus' ) {
 		if ( current_index < cchar_text.length-1 ) {

@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			<div class="displayer">
-				<canvas id="text"></canvas>
+				<canvas id="textarea"></canvas>
 			</div>
 			<div class="inputboard">
 				<div class="keyboard" id="keyboard">
@@ -67,11 +67,11 @@
 						<button class="key" id="ㄥ" onclick="keyin(this.id)">ㄥ</button>
 					</div>
 					<div class="row5">
-						<button class="control" id="key_up" onclick="ctrl_up()">↑</button>
-						<button class="control" id="key_down" onclick="ctrl_down()">↓</button>
+						<button class="control" id="key_up" onclick="up()">↑</button>
+						<button class="control" id="key_down" onclick="down()">↓</button>
 						<button class="control" id="key_space" onclick="space()">　</button>
-						<button class="control" id="key_left" onclick="ctrl_previous()">←</button>
-						<button class="control" id="key_right" onclick="ctrl_next()">→</button>
+						<button class="control" id="key_left" onclick="left()">←</button>
+						<button class="control" id="key_right" onclick="right()">→</button>
 					</div>
 				</div>
 				<div class="selector" id="selector">
@@ -128,9 +128,9 @@
 						<button class="selection" id="s44" onclick="select(this)">　</button>
 					</div>
 					<div class="row5">
-						<button class="control" id="sel_previous" onclick="sel_previous()">上一頁</button>
+						<button class="control" id="sel_previous_page" onclick="sel_previous_page()">上一頁</button>
 						<button class="control" id="sel_esc" onclick="sel_esc()">取消</button>
-						<button class="control" id="sel_next" onclick="sel_next()">下一頁</button>
+						<button class="control" id="sel_next_page" onclick="sel_next_page()">下一頁</button>
 					</div>
 				</div>
 			</div>
@@ -139,11 +139,12 @@
 		<script src="js/CChar.js"></script>
 		<script src="js/print.js"></script>
 		<script src="js/query.js"></script>
-		<script src="js/text.js"></script>
-		<script src="js/select.js"></script>
-		<script src="js/control.js"></script>
+		<script src="js/textarea.js"></script>
+		<script src="js/inputboard.js"></script>
+		<script src="js/selector.js"></script>
+		<script src="js/keyboard.js"></script>
 		<script>
-			canvas = document.getElementById('text');
+			canvas = document.getElementById('textarea');
 			cchars = [
 				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
 				new CChar('哈', ['ㄏ','ㄚ'] ),

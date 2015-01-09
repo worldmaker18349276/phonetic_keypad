@@ -7,7 +7,7 @@ var punctuation = [
 
 
 
-function query_char( cchar, callback ) {
+function query_char( cchar ) {
 	var para = 'zhuyin='+cchar.getPhoneString();
 	
 	var oXHR = new XMLHttpRequest();
