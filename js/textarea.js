@@ -1,6 +1,7 @@
 var text_canvas;
-var text_size;
-var line_spacing;
+var text_size = 36;
+var line_spacing = Math.round(text_size/6);
+var canvas_width = 764;
 var row_size;
 
 var end_cchar = new CChar('　');
@@ -9,8 +10,6 @@ var hightlight;
 var current_index = 0;
 var input_mode; /* focus, edit, warning, (select) */
 
-var default_text_size = 36;
-var default_canvas_width = 764;
 
 
 // inner method
@@ -42,18 +41,28 @@ function _text_canvas_clear( cx ) {
 
 
 
-function text_init( canvas, cchars ) {
-	text_canvas = canvas;
-	text_size = default_text_size;
-	line_spacing = Math.round(text_size/6);
+function text_init( canvas, textsize, linespacing, canvaswidth ) {
+	if ( canvas !== undefined )
+		text_canvas = canvas;
 
+	if ( textsize !== undefined )
+		text_size = textsize;
+
+	if ( linespacing !== undefined )
+		line_spacing = linespacing;
+
+	if ( canvaswidth !== undefined )
+		canvas_width = canvaswidth;
+
+	_text_canvas_width(canvas_width);
+}
+
+function text_set( cchars ) {
 	current_index = cchars.length;
 	input_mode = 'focus';
 	cchar_text = cchars;
 	cchar_text.push(end_cchar);
 	hightlight = new Array();
-
-	_text_canvas_width(default_canvas_width);
 
 	text_repaint();
 }

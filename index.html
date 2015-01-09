@@ -144,8 +144,8 @@
 		<script src="js/selector.js"></script>
 		<script src="js/keyboard.js"></script>
 		<script>
-			canvas = document.getElementById('textarea');
-			cchars = [
+			var canvas = document.getElementById('textarea');
+			var cchars = [
 				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
 				new CChar('哈', ['ㄏ','ㄚ'] ),
 				new CChar('疑', ['ㄧ','ˊ'] ),
@@ -233,13 +233,14 @@
  				new CChar('疑', ['ㄧ','ˊ'] ),
 				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
 				new CChar('國', ['ㄍ','ㄨ','ㄛ','ˊ'] ),
-				new CChar('哈', ['ㄏ','ㄚ'] ),
-				new CChar('疑', ['ㄧ','ˊ'] ),
-				new CChar('咧', ['ㄌ','ㄧ','ㄝ','˙'] ),
-				new CChar('哦', ['ㄜ','˙'] )
 			];
-			text_init(canvas, cchars);
+			text_init(canvas);
+			text_set(cchars);
 
+			var items = document.getElementsByClassName("selection");
+			var sel_previous = document.getElementById('sel_previous_page');
+			var sel_next = document.getElementById('sel_next_page');
+			sel_init(items, sel_previous, sel_next);
 		</script>
 	</body>
 </html>

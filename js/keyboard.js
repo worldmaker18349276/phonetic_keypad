@@ -13,7 +13,7 @@ function _edit_confirm() {
 	} else {
 
 		toggle_inputboard('selector');
-		sel_init(sels);
+		sel_set(sels);
 
 	}
 }
@@ -80,7 +80,7 @@ function dot() {
 		text_edit_abandon();
 
 	toggle_inputboard('selector');
-	sel_init(punctuation);
+	sel_set(punctuation);
 
 	text_repaint();
 }

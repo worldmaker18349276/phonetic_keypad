@@ -1,16 +1,19 @@
+var items;
+var sel_previous_page_button;
+var sel_next_page_button;
+
 var selections;
 var page = 0;
 
 
 function _sel_load() {
 	_sel_clear();
-	var items = document.getElementsByClassName("selection");
 	var n = Math.min(selections.length-page*items.length, items.length);
 	for ( var i=0; i<n; i++ )
 		items[i].innerHTML = selections[i+page*items.length];
 
-	document.getElementById('sel_previous_page').disabled = ( page == 0 );
-	document.getElementById('sel_next_page').disabled = ( n < items.length );
+	sel_previous_page_button.disabled = ( page == 0 );
+	sel_next_page_button.disabled = ( n < items.length );
 }
 
 function _sel_clear() {
@@ -19,7 +22,15 @@ function _sel_clear() {
 		items[i].innerHTML = '　';
 }
 
-function sel_init( sels ) {
+
+
+function sel_init( it, pre, next ) {
+	items = it;
+	sel_previous_page_button = pre;
+	sel_next_page_button = next;
+}
+
+function sel_set( sels ) {
 	page = 0;
 	selections = sels;
 	_sel_load();
