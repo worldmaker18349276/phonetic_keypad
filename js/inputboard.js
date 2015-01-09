@@ -1,4 +1,4 @@
-var inputboards = [ 'keyboard', 'selector' ];
+var inputboards = [ 'keyboard', 'selector', 'controller' ];
 var current_board = 'keyboard';
 function toggle_inputboard( board ) {
 	if ( inputboards.indexOf(board) != -1 ) {
