@@ -1,4 +1,4 @@
-.displayer {
+#displayer {
 	width: 764px;
 	height: 312px;
 	border: 2px solid Gray;
@@ -7,7 +7,7 @@
 	overflow-y: auto;
 }
 
-.inputboard {
+#inputboard {
 	width: 764px;
 	height: 312px;
 	border: 2px solid Gray;
