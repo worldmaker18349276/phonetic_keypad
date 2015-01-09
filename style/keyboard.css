@@ -1,28 +1,23 @@
 .keyboard {
-
 	display: block;
-	margin: 2px auto;
+	margin: 0px auto 0px auto;
 	width: 744px; /* (key.width + 2*row.margin)*11 + 2*key.width/3 */
 }
 
 .keyboard .row1 {
-	margin: 2px auto;
-	overflow: hidden;
+	margin: 2px 0px 2px 0px;
 }
 .keyboard .row2 {
-	margin: 2px auto;
-	margin-left: 20px; /* key.width/3 */
+	margin: 2px 0px 2px 20px; /* key.width/3 */
 }
 .keyboard .row3 {
-	margin: 2px auto;
-	margin-left: 40px;
+	margin: 2px 0px 2px 40px;
 }
 .keyboard .row4 {
-	margin: 2px auto;
-	margin-left: 60px;
+	margin: 2px 0px 2px 60px;
 }
 .keyboard .row5 {
-	margin: 2px auto;
+	margin: 2px auto 2px auto;
 	width: 720px;
 }
 

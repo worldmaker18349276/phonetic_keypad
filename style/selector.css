@@ -1,14 +1,14 @@
 .selector {
 	display: none;
-	margin: 2px auto;
+	margin: 0px auto 0px auto;
 	width: 704px; /* (selection.width + 2*row.margin)*11 */
 }
 
 .selector .row {
-	margin: 2px auto;
+	margin: 2px 0px 2px 0px;
 }
 .selector .row5 {
-	margin: 2px auto;
+	margin: 2px auto 2px auto;
 	width: 552px; /* (control.width + 2*row.margin)*3 */
 }
 
