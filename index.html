@@ -135,6 +135,25 @@
 					</div>
 				</div>
 				<div class="controller" id="controller">
+					<button class="control" id="ctrl_copy_text">複製文字</button>
+					<button class="control" id="ctrl_copy_phone">複製注音</button>
+					<button class="control" id="ctrl_copy_img">複製成圖片</button>
+					<button class="control" id="ctrl_read">朗讀文章</button>
+					<p/>
+					<button class="control" id="ctrl_setting" onclick="toggle_inputboard('setting')">設定</button>
+					<button class="control" id="ctrl_esc" onclick="toggle_inputboard('keyboard')">取消</button>
+				</div>
+				<div class="setting" id="setting">
+					大小
+						<input type="radio" name="size" value="小"/>小
+						<input type="radio" name="size" value="中" checked="checked"/>中
+						<input type="radio" name="size" value="大"/>大
+					<p/>
+					即時發音
+						<input type="radio" name="pronunciation" value="關" checked="checked"/>關
+						<input type="radio" name="pronunciation" value="開"/>開
+					<p/>
+					<button class="control" id="ctrl_esc" onclick="toggle_inputboard('keyboard')">取消</button>
 				</div>
 			</div>
 		</div>
