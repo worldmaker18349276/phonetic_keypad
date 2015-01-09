@@ -1,0 +1,19 @@
+.controller {
+	display: none;
+}
+.controller .main {
+	padding: 10px;
+	height: 252px;
+	font-size: 20px;
+}
+.controller .buttom {
+	padding: 5px;
+	font-size: 20px;
+	text-align: right;
+}
+
+.controller .control {
+	font-size: 20px;
+	font-family: "標楷體";
+	height: 30px;
+}
