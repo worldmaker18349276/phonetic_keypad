@@ -137,14 +137,14 @@
 				</div>
 				<div class="controller" id="controller">
 					<div class="main">
-						<button class="control" id="ctrl_copy_text">複製文字</button>
-						<button class="control" id="ctrl_copy_phone">複製注音</button>
-						<button class="control" id="ctrl_copy_img">儲存成圖片</button>
-						<button class="control" id="ctrl_read">朗讀文章</button>
+						<button class="control" onclick="ctrl_copy_text()">複製文字</button>
+						<button class="control" onclick="ctrl_copy_phone()">複製注音</button>
+						<button class="control" onclick="ctrl_save_img()">儲存成圖片</button>
+						<button class="control" onclick="ctrl_read()">朗讀文章</button>
 					</div>
 					<div class="buttom">
-						<button class="control" id="ctrl_setting" onclick="toggle_inputboard('setting')">設定</button>
-						<button class="control" id="ctrl_esc" onclick="toggle_inputboard('keyboard')">取消</button>
+						<button class="control" onclick="toggle_inputboard('setting')">設定</button>
+						<button class="control" onclick="toggle_inputboard('keyboard')">取消</button>
 					</div>
 				</div>
 				<div class="controller" id="setting">
@@ -173,6 +173,7 @@
 		<script src="js/inputboard.js"></script>
 		<script src="js/selector.js"></script>
 		<script src="js/keyboard.js"></script>
+		<script src="js/controller.js"></script>
 		<script>
 			var canvas = document.getElementById('textarea');
 			var cchars = [
