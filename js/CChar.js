@@ -8,6 +8,8 @@ phone_lists[0] = [ 'ˇ', 'ˋ', 'ˊ', '˙' ];
 function CChar( text, phones ) {
 	this.text = text;
 	this.phones = new Array(4);
+	if ( typeof(phones) == 'string' )
+		phones = phones.split('');
 	for ( var i in phones )
 		this.putPhone(phones[i]);
 }
