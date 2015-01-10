@@ -18,5 +18,5 @@ function query_char( cchar ) {
 	if ( oXHR.responseText === '' )
 		return new Array();
 	else
-		return oXHR.responseText.split(' ');
+		return oXHR.responseText.split('');
 }

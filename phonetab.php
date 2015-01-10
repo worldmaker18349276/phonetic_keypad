@@ -1,19 +1,14 @@
 <?php
 
 	if ( isset($_POST['zhuyin']) ) {
+		$zhuyin = $_POST['zhuyin'];
 
-		$phonetab = fopen("meta/phonetab.txt", "r") or die("Unable to open file!");
+		include_once 'mysql_config.php';
+		$result = mysql_query("SELECT `text` FROM `phonetab` WHERE phone='$zhuyin'");
+		while ( $rows = mysql_fetch_array($result, MYSQL_ASSOC) )
+			echo $rows['text'];
 
-		while ( ($line = fgets($phonetab)) !== false ) {
-			$pair = explode(' ', $line, 2);
-			if ( $pair[0] === $_POST['zhuyin'] ) {
-				print $pair[1];
-				break;
-			}
-		}
-		
-		fclose($phonetab);
-		
+		mysql_close();
 	}
 
 ?>
