@@ -1,6 +1,6 @@
-phonetics_quiz
+phonetic_keypad
 ==============
 
-html5 version of phonetics_quiz made by gsyan
+html5 version of phonetic keypad made by gsyan
 
-original version: http://gsyan888.blogspot.tw/2012/10/flash-phoneticsquiz.html
+original version: http://gsyan888.blogspot.tw/2010/01/flash-phone.html
