@@ -1,41 +1,45 @@
+/*
+key_size = 60;
+key_padding = round(key_size/3) = 20;
+arrowkey_width = key_size + key_padding*2 = 100;
+key_margin = 2; (?)
+row_margin = 2;
+*/
+
 .keyboard {
 	display: block;
-	margin: 0px auto 0px auto;
-	width: 744px; /* (key.width + 2*row.margin)*11 + 2*key.width/3 */
+	margin: auto;
+	width: 744px; /* (key_size + key_margin*2)*11 + key_padding*2 */
+	height: 320px; /* (key_size + row_margin*2)*5 */
 }
 
-.keyboard .row1 {
-	margin: 2px 0px 2px 0px;
+.keyboard .row1, .keyboard .row2, .keyboard .row3, .keyboard .row4, .keyboard .row5 {
+	padding-top: 2px; /* row_margin */
+	padding-bottom: 2px; /* row_margin */
 }
 .keyboard .row2 {
-	margin: 2px 0px 2px 20px; /* key.width/3 */
+	padding-left: 20px; /* key_padding */
 }
 .keyboard .row3 {
-	margin: 2px 0px 2px 40px;
-}
-.keyboard .row4 {
-	margin: 2px 0px 2px 0px;
-}
-.keyboard .row5 {
-	margin: 2px auto 2px auto;
-	width: 720px;
+	padding-left: 40px; /* key_padding*2 */
 }
 
 
 .keyboard .key, .keyboard .control {
-	font-size: 40px;
+	font-size: 40px; /* round(key_size*2/3) */
 	font-family: "標楷體";
-	height: 60px;
-	width: 60px;
+	height: 60px; /* key_size */
+	width: 60px; /* key_size */
 }
 
 #key_space {
-	width: 300px;
+	width: 324px; /* keyboard.width - 4*(arrowkey_width + key_margin*2) - key_margin*2 */
 }
 
 #key_up, #key_down, #key_left, #key_right {
-	width: 100px;
+	width: 100px; /* arrowkey_width */
 }
+
 
 
 /* color setting */

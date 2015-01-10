@@ -1,27 +1,33 @@
+/*
+key_size = 60;
+ctrlkey_width = key_size*3 = 180;
+key_margin = 2; (?)
+row_margin = 2;
+*/
+
 .selector {
 	display: none;
-	margin: 0px auto 0px auto;
-	width: 704px; /* (selection.width + 2*row.margin)*11 */
+	margin: auto;
+	width: 704px; /* (key_size + key_margin*2)*11 */
+	height: 320px; /* (key_size + row_margin*2)*5 */
 }
 
-.selector .row {
-	margin: 2px 0px 2px 0px;
+.selector .row, .selector .row5 {
+	padding-top: 2px; /* row_margin */
+	padding-bottom: 2px; /* row_margin */
 }
 .selector .row5 {
-	margin: 2px auto 2px auto;
-	width: 552px; /* (control.width + 2*row.margin)*3 */
+	margin: auto;
+	width: 552px; /* (ctrlkey_width + key_margin*2)*3 */
 }
 
-.selector .selection {
-	font-size: 40px;
+.selector .selection, .selector .control {
+	font-size: 40px; /* round(key_size*2/3) */
 	font-family: "標楷體";
-	height: 60px;
-	width: 60px;
+	height: 60px; /* key_size */
+	width: 60px; /* key_size */
 }
 
 .selector .control {
-	font-size: 40px;
-	font-family: "標楷體";
-	height: 60px;
-	width: 180px;
+	width: 180px; /* ctrlkey_width */
 }

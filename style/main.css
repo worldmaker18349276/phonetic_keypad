@@ -1,16 +1,33 @@
+/*
+div_width = 764;
+border_width = 5;
+div_margin = 2;
+inputboard_height = 320;
+*/
+
+#main_container {
+	margin: 0px auto 0px auto;
+	width: 774px; /* div_width + border_width*2 */
+}
+
 #displayer {
-	width: 764px;
-	height: 312px;
-	border: 2px solid Gray;
+	position: absolute;
+	bottom: 334px; /* inputboard_height + border_width*2 + div_margin*2 */
+	top: 2px; /* div_margin */
+	width: 764px; /* div_width */
+
+	border: 5px solid Gray;
 	border-radius: 10px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
 
 #inputboard {
-	width: 764px;
-	height: 312px;
-	border: 2px solid Gray;
+	position: absolute;
+	bottom: 2px; /* div_margin */
+	height: 320px; /* inputboard_height */
+	width: 764px; /* div_width */
+
+	border: 5px outset Gray;
 	border-radius: 5px;
 }
-
