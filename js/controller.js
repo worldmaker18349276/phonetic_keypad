@@ -34,3 +34,27 @@ function ctrl_read() {
 	var audio = new Audio(url);
 	audio.play();
 }
+
+var stylesheets = [ 'main.css', 'keyboard.css', 'selector.css', 'controller.css' ];
+function ctrl_resize( size ) {
+	var link;
+	for ( var i in stylesheets ) {
+		link = document.createElement('link');
+		link.href = 'style/'+size+'/'+stylesheets[i];
+		link.type = 'text/css';
+		link.rel = 'stylesheet';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	}
+
+	var canvaswidth;
+	switch ( size ) {
+		case 'small':
+			canvaswidth = 530;
+			break;
+
+		case 'big':
+			canvaswidth = 764;
+			break;
+	}
+	text_init(text_canvas, canvaswidth);
+}

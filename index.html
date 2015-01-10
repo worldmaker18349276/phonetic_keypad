@@ -4,10 +4,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title> phonetics quiz </title>
 
-		<link href="style/main.css" rel="stylesheet" type="text/css">
-		<link href="style/keyboard.css" rel="stylesheet" type="text/css">
-		<link href="style/selector.css" rel="stylesheet" type="text/css">
-		<link href="style/controller.css" rel="stylesheet" type="text/css">
+		<link href="style/big/main.css" rel="stylesheet" type="text/css">
+		<link href="style/big/keyboard.css" rel="stylesheet" type="text/css">
+		<link href="style/big/selector.css" rel="stylesheet" type="text/css">
+		<link href="style/big/controller.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="main_container">
@@ -149,10 +149,9 @@
 				</div>
 				<div class="controller" id="setting">
 					<div class="main">
-						大小
-							<input type="radio" name="size" value="小"/>小
-							<input type="radio" name="size" value="中" checked="checked"/>中
-							<input type="radio" name="size" value="大"/>大
+						畫面大小
+							<input type="radio" name="size" value="小" onclick="ctrl_resize('small')"/>小
+							<input type="radio" name="size" value="大" onclick="ctrl_resize('big')" checked="checked"/>大
 						<p/>
 						即時發音
 							<input type="radio" name="pronunciation" value="關" checked="checked"/>關

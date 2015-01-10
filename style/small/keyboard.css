@@ -1,0 +1,103 @@
+/*
+key_size = 40;
+key_padding = round(key_size/3) = 13;
+arrowkey_width = key_size + key_padding*2 = 66;
+key_margin = 2; (?)
+row_margin = 2;
+*/
+
+.keyboard {
+	display: block;
+	margin: auto;
+	width: 510px; /* (key_size + key_margin*2)*11 + key_padding*2 */
+	height: 220px; /* (key_size + row_margin*2)*5 */
+}
+
+.keyboard .row1, .keyboard .row2, .keyboard .row3, .keyboard .row4, .keyboard .row5 {
+	padding-top: 2px; /* row_margin */
+	padding-bottom: 2px; /* row_margin */
+}
+.keyboard .row2 {
+	padding-left: 13px; /* key_padding */
+}
+.keyboard .row3 {
+	padding-left: 26px; /* key_padding*2 */
+}
+
+
+.keyboard .key, .keyboard .control {
+	font-size: 27px; /* round(key_size*2/3) */
+	font-family: "標楷體";
+	height: 40px; /* key_size */
+	width: 40px; /* key_size */
+}
+
+#key_space {
+	width: 226px; /* keyboard.width - 4*(arrowkey_width + key_margin*2) - key_margin*2 */
+}
+
+#key_up, #key_down, #key_left, #key_right {
+	width: 66px; /* arrowkey_width */
+}
+
+
+
+/* color setting */
+
+/*zhuyin*/
+#ㄅ, #ㄆ, #ㄇ, #ㄈ {
+	background-color: Lime;
+}
+#ㄉ, #ㄊ, #ㄋ, #ㄌ {
+	background-color: LightGreen;
+}
+#ㄍ, #ㄎ, #ㄏ {
+	background-color: Lime;
+}
+#ㄐ, #ㄑ, #ㄒ {
+	background-color: LightGreen;
+}
+#ㄓ, #ㄔ, #ㄕ, #ㄖ {
+	background-color: Orchid;
+}
+#ㄗ, #ㄘ, #ㄙ {
+	background-color: Plum;
+}
+#ㄧ, #ㄨ, #ㄩ {
+	background-color: Yellow;
+}
+#ㄚ, #ㄛ, #ㄜ, #ㄝ {
+	background-color: Orange;
+}
+#ㄞ, #ㄟ, #ㄠ, #ㄡ {
+	background-color: PeachPuff;
+}
+#ㄢ, #ㄣ, #ㄤ, #ㄥ {
+	background-color: Orange;
+}
+#ㄦ {
+	background-color: PeachPuff;
+}
+
+/*tone*/
+#ˇ, #ˋ, #ˊ, #˙ {
+	background-color: LightGray;
+}
+
+/*others keys*/
+#key_space {
+	background-color: LightGray;
+}
+
+#key_back {
+	background-color: Red;
+}
+
+#key_dot {
+	background-color: SaddleBrown;
+}
+
+#key_up, #key_down, #key_left, #key_right {
+	background-color: Blue;
+}
+

@@ -1,7 +1,7 @@
 var text_canvas;
 var text_size = 36;
 var line_spacing = Math.round(text_size/6);
-var canvas_width = 764;
+var canvas_width = 764; /* displayer.width */
 var row_size;
 
 var end_cchar = new CChar('　');
@@ -41,9 +41,12 @@ function _text_canvas_clear( cx ) {
 
 
 
-function text_init( canvas, textsize, linespacing, canvaswidth ) {
+function text_init( canvas, canvaswidth, textsize, linespacing ) {
 	if ( canvas !== undefined )
 		text_canvas = canvas;
+
+	if ( canvaswidth !== undefined )
+		canvas_width = canvaswidth;
 
 	if ( textsize !== undefined )
 		text_size = textsize;
@@ -51,10 +54,10 @@ function text_init( canvas, textsize, linespacing, canvaswidth ) {
 	if ( linespacing !== undefined )
 		line_spacing = linespacing;
 
-	if ( canvaswidth !== undefined )
-		canvas_width = canvaswidth;
-
 	_text_canvas_width(canvas_width);
+
+	if ( cchar_text )
+		text_repaint();
 }
 
 function text_set( cchars ) {

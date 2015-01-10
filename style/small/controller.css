@@ -1,0 +1,34 @@
+/*
+key_size = 20;
+font_size = round(key_size*2/3) = 13;
+content_padding = 7;
+*/
+
+.controller {
+	display: none;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.controller div {
+	padding: 7px; /* content_padding */
+	font-size: 13px; /* font_size */
+}
+.controller .main {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.controller .bottom {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	text-align: right;
+}
+
+.controller .control {
+	font-size: 13px; /* round(key_size*2/3) */
+	font-family: "標楷體";
+	height: 20px; /* key_size */
+}

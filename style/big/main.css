@@ -1,0 +1,33 @@
+/*
+div_width = keyboard.width + 20 = 764;
+inputboard_height = keyboard.height = 320;
+border_width = 5;
+div_margin = 2;
+*/
+
+#main_container {
+	margin: 0px auto 0px auto;
+	width: 774px; /* div_width + border_width*2 */
+}
+
+#displayer {
+	position: absolute;
+	bottom: 334px; /* inputboard_height + border_width*2 + div_margin*2 */
+	top: 2px; /* div_margin */
+	width: 764px; /* div_width */
+
+	border: 5px solid Gray;
+	border-radius: 10px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#inputboard {
+	position: absolute;
+	bottom: 2px; /* div_margin */
+	height: 320px; /* inputboard_height */
+	width: 764px; /* div_width */
+
+	border: 5px outset Gray;
+	border-radius: 5px;
+}
