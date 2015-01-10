@@ -27,12 +27,22 @@ function ctrl_save_img() {
 	delete a;
 }
 
+var text_audio;
 function ctrl_read() {
-	var url = 'http://translate.google.com/translate_tts?tl=zh&q=';
-	for ( var i in cchar_text )
-		url += cchar_text[i].text;
-	var audio = new Audio(url);
-	audio.play();
+	if ( text_audio !== undefined ) {
+		text_audio.pause();
+		text_audio = undefined;
+	} else {
+		var url = 'http://translate.google.com/translate_tts?tl=zh&q=';
+		for ( var i in cchar_text )
+			url += cchar_text[i].text;
+		
+		text_audio = new Audio(url);
+		text_audio.onended = function() {
+			text_audio = undefined;
+		};
+		text_audio.play();
+	}
 }
 
 var stylesheets = [ 'main.css', 'keyboard.css', 'selector.css', 'controller.css' ];
