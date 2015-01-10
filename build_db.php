@@ -5,8 +5,8 @@
 
 	$sql = "CREATE TABLE `phonetab` (
 		`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		`phone` VARCHAR(5) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NOT NULL,
-		`text` VARCHAR(1) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci NOT NULL
+		`phone` VARCHAR(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+		`text` VARCHAR(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 	)";
 	if ( !mysql_query($sql) )
 		die("Could not create table: " . mysql_error());
