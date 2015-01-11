@@ -58,6 +58,7 @@ controller 和 setting 的排版由 controller.css 設定。
 #操作與運作原理
 本程式的運作主要可以三個部分：資料庫的存取，CChar 的定義和元件的操作。
 
+##資料庫
 資料庫的部分，包含實作查詢動作的 query.js，提供查詢服務的 phonetab.php，和紀錄預選字資料的 phonetab 表格，另外還有輔助與資料庫建立連線的 mysql_config.php。
 
 ###phonetab
